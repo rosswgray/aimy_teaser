@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'faker'
 
 
     Activity.create(
@@ -27,3 +28,24 @@
       price: 200,
       rating: 5
     )
+
+    def random_date
+        dates = []
+        date_bore = Faker::Date.between(from: rand(1..5).days.ago, to: Date.today)
+        date_after = Faker::Date.forward(days: rand(1..5))
+        dates.push(date_before, date_after)
+        dates.sample
+    end
+
+    p random_date
+
+
+    def generate_activity
+        Activity.create(
+        title: 'dance',
+        description: 'Amalya brings dance to children, actually a lot of different dances! Come try and fin a nice way for your children to discover music, its own body and creative soul!',
+        price: 200,
+        rating: 5,
+        date: random_date
+        )
+    end

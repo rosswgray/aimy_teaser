@@ -25,6 +25,6 @@ git pull origin master
 
 -- terminal instructions to pull the latest version of the WX-app
 
-navigate to C:\Users\YOURNAME\WeChatProjects\aimy_teaser_wx
+navigate to /mnt/c/Users/YOURNAME/WeChatProjects/aimy_teaser_wx
 gst # should be clean, check with lead if not
 git pull origin main

@@ -36,6 +36,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
       t.string :phone_number
       t.string :profile_picture
       t.string :name
+      t.string :role
 
       t.boolean :admin, default: false
 

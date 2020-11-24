@@ -1,5 +1,5 @@
 class Booking < ApplicationRecord
-  has_one :activity
-  has_one :user
+  belongs_to :activity
+  belongs_to :user
 
 end

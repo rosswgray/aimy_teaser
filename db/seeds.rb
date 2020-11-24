@@ -29,6 +29,12 @@ require 'faker'
     #   rating: 5
     # )
 
+    ross = User.create!(name: "Ross", role: "organizer", email: "rosswgray@gmail.com", password: "password12345")
+    arnaud = User.create!(name: "Arnaud", role: "parent", email: "gazielly@yahoo.com", password: "password12345")
+
+    Activity.delete_all
+    puts "deleting previous seed"
+
     def random_date
         dates = []
         date_before = Faker::Date.between(from: rand(1..5).days.ago, to: Date.today)
@@ -37,7 +43,7 @@ require 'faker'
         return dates.sample
     end
 
-    p random_date
+    # p random_date
 
     def random_price
         array = []
@@ -47,18 +53,21 @@ require 'faker'
     return result = array.sample
     end
 
-
-    def generate_activity
-        Activity.create(
+    10.times do
+        Activity.create!(
+        user_id: ross.id,
         title: Faker::Artist.name,
         description: Faker::Lorem.paragraph,
         price: random_price,
         rating: rand(1..5),
         date: random_date
         )
+        p "1 activity generated"
     end
 
-    10.times do
-        generate_activity
-        puts "1 activity generated"
-    end
+      # p activity
+    # 10.times do
+    #   generate_activity
+    #   Activity.title
+    #   puts "1 activity generated"
+    # end

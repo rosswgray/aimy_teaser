@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 2020_11_24_053348) do
     t.string "phone_number"
     t.string "profile_picture"
     t.string "name"
+    t.string "role"
     t.boolean "admin", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

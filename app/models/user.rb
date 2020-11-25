@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_many :bookings
 
   # an organizer has many booked activities that customers attend
-  # has_many :listed_bookings, through: :activities, source: :activities
+  has_many :bookings_as_organizer, through: :activities, source: :bookings
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable

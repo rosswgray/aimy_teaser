@@ -7,13 +7,13 @@ class Api::V1::BookingsController < Api::V1::BaseController
   def new
     @booking = Booking.new
   end
-  
+
   def create
     @booking = Booking.new(booking_params)
     if @booking.save
       render json: { booking: @booking, status: :success }
     else
-     render_error
+      render_error
     end
   end
 

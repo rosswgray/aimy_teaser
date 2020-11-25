@@ -25,10 +25,7 @@ require 'faker'
     end
 
     def random_activity
-        activities_list = [
-        "breakdancing", 
-        "competitive dancing",
-        "dancesport",
+        activities_list = [ "breakdancing", "competitive dancing", "dancesport",
         "freerunning",
         "gymnastics",
         "high kick",
@@ -62,8 +59,7 @@ require 'faker'
         "handcrafting",
         "ballet",
         "yoga",
-        "cooking",
-        "playing",
+        "cooking", "playing",
         "language",
         "coding",
         ]
@@ -76,34 +72,35 @@ require 'faker'
     puts "deleting previous seed"
 
     # Generation of users-organizers and activities
-    provider = ["yahoo.com", "gmail.com", "outlook.com", "zoho.com"].sample
+    # provider = ["yahoo.com", "gmail.com", "outlook.com", "zoho.com"].sample
     
     10.times do
-    User.create!(
-        name: Faker::Name.unique.name, 
-        role: "organizer",
-        email: "#{Faker::Name.unique.name}@#{provider}",
-        password: "password#{Faker::Code.nric}"
-    )
+        User.create!(
+            name: Faker::Name.unique.name, 
+            role: "organizer",
+            email: Faker::Internet.email,
+            password: "password#{Faker::Code.nric}"
+            )
+    end
 
     User.all.each do |x|
         if x.role == "organizer"
-        rand(1..5).times do
-            Activity.create!(
-            user_id: x.id,
-            title: "#{x.name} #{random_activity}",
-            description: "#{Faker::Quote.most_interesting_man_in_the_world} #{Faker::Quote.yoda} #{Faker::Quote.matz}",
-            price: random_price,
-            rating: rand(1..10),
-            date: random_date,
-            start_time: "#{rand(8..18)}",
-            end_time: "#{:start_time + rand(1..2)}",
-            photos: "https://picsum.photos/85"
-            )
+            3.times do
+                Activity.create!(
+                user_id: x.id,
+                title: "#{x.name} #{random_activity}",
+                description: "#{Faker::Quote.most_interesting_man_in_the_world} #{Faker::Quote.yoda} #{Faker::Quote.matz}",
+                price: random_price,
+                rating: rand(1..10),
+                date: random_date,
+                start_time: rand(9..13),
+                end_time: rand(14..18),
+                photos: "https://picsum.photos/85"
+                )
+            end
         end
-    end
-    puts "1 organizer has been created"
-    puts "1 activity has been created"
+        puts "1 organizer has been created"
+        puts "3 activities has been created"
     end
 
     # generation of users-parents
@@ -111,7 +108,7 @@ require 'faker'
         User.create!(
             name: Faker::Name.unique.name, 
             role: "parent",
-            email: "#{Faker::Name.unique.name}@#{provider}",
+            email: Faker::Internet.email,
             password: "password#{Faker::Code.nric}"
         )
         puts "1 parent has been created"

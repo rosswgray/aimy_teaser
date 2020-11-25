@@ -8,8 +8,8 @@ class CreateActivities < ActiveRecord::Migration[6.0]
       t.float :price
       t.float :rating
       t.date :date
-      t.datetime :start_time
-      t.datetime :end_time
+      t.integer :start_time
+      t.integer :end_time
 
       t.timestamps
     end

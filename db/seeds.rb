@@ -7,34 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 
-
-    # Activity.create(
-    #   title: 'soccer',
-    #   description: 'We are a team of dedicated professionals offering children from 3 years-old the opportunity to discover and play soccer in a convenient environement.',
-    #   price: 300,
-    #   rating: 4
-    # )
-
-    # Activity.create(
-    #   title: 'tennis',
-    #   description: 'Tennis is a very good sport for children, even from 4 years-old. It helps developping motricity and senses, while giving children a taste of performance and socialization',
-    #   price: 250,
-    #   rating: 3
-    # )
-
-    # Activity.create(
-    #   title: 'dance',
-    #   description: 'Amalya brings dance to children, actually a lot of different dances! Come try and fin a nice way for your children to discover music, its own body and creative soul!',
-    #   price: 200,
-    #   rating: 5
-    # )
-
-    ross = User.create!(name: "Ross", role: "organizer", email: "rosswgray@gmail.com", password: "password12345")
-    arnaud = User.create!(name: "Arnaud", role: "parent", email: "gazielly@yahoo.com", password: "password12345")
-
-    Activity.delete_all
-    puts "deleting previous seed"
-
+    # Single methods for randomization
     def random_date
         dates = []
         date_before = Faker::Date.between(from: rand(1..5).days.ago, to: Date.today)
@@ -42,8 +15,6 @@ require 'faker'
         dates.push(date_before, date_after)
         return dates.sample
     end
-
-    # p random_date
 
     def random_price
         array = []
@@ -53,21 +24,107 @@ require 'faker'
     return result = array.sample
     end
 
-    10.times do
-        Activity.create!(
-        user_id: ross.id,
-        title: Faker::Artist.name,
-        description: Faker::Lorem.paragraph,
-        price: random_price,
-        rating: rand(1..5),
-        date: random_date
-        )
-        p "1 activity generated"
+    def random_activity
+        activities_list = [
+        "breakdancing", 
+        "competitive dancing",
+        "dancesport",
+        "freerunning",
+        "gymnastics",
+        "high kick",
+        "parkour",
+        "stunt",
+        "trampolining",
+        "field archery",
+        "gungdo",
+        "badminton",
+        "Padel",
+        "volleyball",
+        "table tennis",
+        "3x3 basketball",
+        "cricket",
+        "softball",
+        "skateboarding",
+        "frisbee",
+        "bicycle",
+        "judo",
+        "soccer",
+        "gym",
+        "golf",
+        "waymarking",
+        "geocaching",
+        "painting",
+        "music",
+        "drama",
+        "lego",
+        "chess",
+        "DIY",
+        "handcrafting",
+        "ballet",
+        "yoga",
+        "cooking",
+        "playing",
+        "language",
+        "coding",
+        ]
+        return activities_list.sample
     end
 
-      # p activity
+    # Clean the database
+    Activity.delete_all
+    User.delete_all
+    puts "deleting previous seed"
+
+    # Generation of users-organizers and activities
+    provider = ["yahoo.com", "gmail.com", "outlook.com", "zoho.com"].sample
+    
+    10.times do
+    User.create!(
+        name: Faker::Name.unique.name, 
+        role: "organizer",
+        email: "#{Faker::Name.unique.name}@#{provider}",
+        password: "password#{Faker::Code.nric}"
+    )
+
+    User.all.each do |x|
+        if x.role == "organizer"
+        rand(1..5).times do
+            Activity.create!(
+            user_id: x.id,
+            title: "#{x.name} #{random_activity}",
+            description: "#{Faker::Quote.most_interesting_man_in_the_world} #{Faker::Quote.yoda} #{Faker::Quote.matz}",
+            price: random_price,
+            rating: rand(1..10),
+            date: random_date,
+            start_time: "#{rand(8..18)}",
+            end_time: "#{:start_time + rand(1..2)}",
+            photos: "https://picsum.photos/85"
+            )
+        end
+    end
+    puts "1 organizer has been created"
+    puts "1 activity has been created"
+    end
+
+    # generation of users-parents
+    5.times do
+        User.create!(
+            name: Faker::Name.unique.name, 
+            role: "parent",
+            email: "#{Faker::Name.unique.name}@#{provider}",
+            password: "password#{Faker::Code.nric}"
+        )
+        puts "1 parent has been created"
+        end
+
     # 10.times do
-    #   generate_activity
-    #   Activity.title
-    #   puts "1 activity generated"
+    #     Activity.create!(
+    #     user_id: ross.id,
+    #     title: Faker::Artist.name,
+    #     description: Faker::Lorem.paragraph,
+    #     price: random_price,
+    #     rating: rand(1..5),
+    #     date: random_date
+    #     )
+    #     p "1 activity generated"
     # end

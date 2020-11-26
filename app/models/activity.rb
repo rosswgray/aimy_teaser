@@ -1,6 +1,8 @@
 class Activity < ApplicationRecord
   belongs_to :organizer, class_name: "User"
-
+  belongs_to :organizer, class_name: "User", foreign_key: :user_id
+  has_many :bookings
+  
   include PgSearch::Model
   pg_search_scope :global_search,
   against: [:title, :description],
@@ -11,6 +13,5 @@ class Activity < ApplicationRecord
       tsearch: { prefix: true },
     }
 
-  belongs_to :organizer, class_name: "User", foreign_key: :user_id
-  has_many :bookings
+  
 end

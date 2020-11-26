@@ -1,7 +1,7 @@
 class Api::V1::BookingsController < Api::V1::BaseController
   def index
     @bookings = Booking.all
-    render json: @bookings #Just for testing
+    # render json: @bookings #Just for testing
   end
 
   def new
@@ -30,5 +30,4 @@ class Api::V1::BookingsController < Api::V1::BaseController
   def render_error
     render json: { error: @booking.errors.full_messages }
   end
-  
 end

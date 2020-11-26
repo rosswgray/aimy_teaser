@@ -1,7 +1,7 @@
 class Api::V1::BookingsController < Api::V1::BaseController
   def index
     @bookings = Booking.all
-    render json: @bookings #Just for testing
+    # render json: @bookings #Just for testing
   end
 
   def new
@@ -9,7 +9,11 @@ class Api::V1::BookingsController < Api::V1::BaseController
   end
 
   def create
+    set_parent
+    set_activity
     @booking = Booking.new(booking_params)
+    @booking.parent = @parent
+    @booking.activity = @activity
     if @booking.save
       render json: { booking: @booking, status: :success }
     else
@@ -23,6 +27,10 @@ class Api::V1::BookingsController < Api::V1::BaseController
     @parent = User.find(params[:user_id])
   end
 
+  def set_activity
+    @activity = Activity.find(params[:activity_id])
+  end
+
   def booking_params
     params.require(:booking).permit(:user_id, :activity_id, :confirmed)
   end
@@ -30,5 +38,4 @@ class Api::V1::BookingsController < Api::V1::BaseController
   def render_error
     render json: { error: @booking.errors.full_messages }
   end
-  
 end

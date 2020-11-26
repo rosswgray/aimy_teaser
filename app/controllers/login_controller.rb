@@ -11,15 +11,25 @@ class LoginController < ApplicationController
       grant_type: "authorization_code"
     }
 
+    puts wechat_params
     @wechat_response ||= RestClient.get(URL, params: wechat_params)
     @wechat_user ||= JSON.parse(@wechat_response.body)
+    # puts "wechat response:", @wechat_response, "wx user:", @wechat_user
   end
 
   def login
-    @user = User.find_or_create_by(open_id: wechat_user.fetch("openid"))
+    open_id = wechat_user.fetch("openid")
+    @user = User.find_by(open_id: open_id)
+    puts @user
+    if @user.nil?
+      @user = User.create(
+        email: open_id + '@aimy.com',
+        password: '123456',
+        open_id: open_id
+      )
+    end
     render json: {
       user: @user
     }
   end
-
 end

@@ -14,5 +14,4 @@ class Api::V1::ActivitiesController < Api::V1::BaseController
     @activity = Activity.find(params[:id])
     @bookings = @activity.bookings
   end
-
 end

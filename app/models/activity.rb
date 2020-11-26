@@ -10,4 +10,7 @@ class Activity < ApplicationRecord
   using: {
       tsearch: { prefix: true },
     }
+
+  belongs_to :organizer, class_name: "User", foreign_key: :user_id
+  has_many :bookings
 end

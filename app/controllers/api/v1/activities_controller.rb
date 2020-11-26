@@ -8,7 +8,8 @@ class Api::V1::ActivitiesController < Api::V1::BaseController
       @activities = Activity.all
       p @activities
     end
-    render json: @activities #Just for testing
+    # KEEP LINE 12 commented out
+    # render json: @activities #Just for testing
   end
 
   def show

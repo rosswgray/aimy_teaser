@@ -23,8 +23,8 @@ ActiveRecord::Schema.define(version: 2020_11_24_053348) do
     t.float "price"
     t.float "rating"
     t.date "date"
-    t.integer "start_time"
-    t.integer "end_time"
+    t.datetime "start_time"
+    t.datetime "end_time"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_activities_on_user_id"
@@ -50,7 +50,6 @@ ActiveRecord::Schema.define(version: 2020_11_24_053348) do
     t.string "phone_number"
     t.string "profile_picture"
     t.string "name"
-    t.string "role"
     t.boolean "admin", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

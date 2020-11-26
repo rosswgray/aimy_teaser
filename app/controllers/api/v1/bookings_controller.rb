@@ -9,7 +9,11 @@ class Api::V1::BookingsController < Api::V1::BaseController
   end
 
   def create
+    set_parent
+    set_activity
     @booking = Booking.new(booking_params)
+    @booking.parent = @parent
+    @booking.activity = @activity
     if @booking.save
       render json: { booking: @booking, status: :success }
     else
@@ -21,6 +25,10 @@ class Api::V1::BookingsController < Api::V1::BaseController
 
   def set_parent
     @parent = User.find(params[:user_id])
+  end
+
+  def set_activity
+    @activity = Activity.find(params[:activity_id])
   end
 
   def booking_params

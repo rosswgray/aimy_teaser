@@ -1,10 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 
 # Single methods for randomization
@@ -29,6 +22,11 @@ def random_activity
     return activities_list.sample
 end
 
+def random_capactiy
+    capacities = [5, 10, 15, 20]
+    return capacities.sample
+end
+
 # Clean the database
 Activity.delete_all
 User.delete_all
@@ -37,6 +35,7 @@ puts "deleting previous seed"
 # Generation of users-organizers and activities
 # provider = ["yahoo.com", "gmail.com", "outlook.com", "zoho.com"].sample
 
+# generation of users: organizers
 10.times do
     User.create!(
         name: Faker::Name.unique.name, 
@@ -46,26 +45,7 @@ puts "deleting previous seed"
     )
 end
 
-User.all.each do |x|
-    if x.role == "organizer"
-        3.times do
-            Activity.create!(
-            user_id: x.id,
-            title: "#{random_activity.capitalize} classes"
-            description: "#{Faker::Quote.most_interesting_man_in_the_world} #{Faker::Quote.yoda} #{Faker::Quote.matz}",
-            price: random_price,
-            rating: rand(1..10),
-            date: random_date,
-            start_time: rand(9..13),
-            end_time: rand(14..18),
-            photos: "https://picsum.photos/85")
-        end
-    end
-    puts "1 organizer has been created"
-    puts "3 activities has been created"
-end
-
-# generation of users-parents
+# generation of users: parents
 5.times do
     User.create!(
         name: Faker::Name.unique.name, 
@@ -76,14 +56,42 @@ end
     puts "1 parent has been created"
 end
 
-# 10.times do
-#     Activity.create!(
-#     user_id: ross.id,
-#     title: Faker::Artist.name,
-#     description: Faker::Lorem.paragraph,
-#     price: random_price,
-#     rating: rand(1..5),
-#     date: random_date
-#     )
-#     p "1 activity generated"
-# end
+User.all.each do |x|
+    if x.role == "organizer"
+        3.times do
+            Activity.create!(
+            user_id: x.id,
+            title: "#{random_activity.capitalize} classes",
+            description: "#{Faker::Quote.most_interesting_man_in_the_world} #{Faker::Quote.yoda} #{Faker::Quote.matz}",
+            price: random_price,
+            capacity: random_capactiy,
+            rating: rand(1..10),
+            date: random_date,
+            start_time: rand(9..13),
+            end_time: rand(14..18),
+            main_photo: "https://picsum.photos/85")
+        end
+    end
+    puts "1 organizer has been created"
+    puts "3 activities have been created"
+end
+
+# makes an array of the all the parents
+parents = []
+User.all.each do |user|
+    if user.role == 'parent'
+        parents.push(user)
+    end
+end
+
+Activity.all.each do |activity|
+    3.times do
+        Booking.create(
+            user_id: parents.sample.id,
+            activity_id: activity.id,
+            confirmed: false,
+            cancelled: false
+        )
+    end
+    puts "3 bookings have been created for #{activity.title}"
+end

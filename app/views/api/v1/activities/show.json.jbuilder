@@ -1,4 +1,4 @@
-json.extract! @activity, :title, :photos, :description, :price, :rating, :date, :start_time, :end_time
+json.extract! @activity, :id, :title, :photos, :description, :capacity, :price, :rating, :date, :start_time, :end_time
 json.organizer_id @activity.user_id
 
 json.bookings @bookings do |b|

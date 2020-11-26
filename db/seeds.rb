@@ -39,7 +39,7 @@ puts "deleting previous seed"
 
 10.times do
     User.create!(
-        name: Faker::Name.unique.name, 
+        name: Faker::Name.unique.name,
         role: "organizer",
         email: Faker::Internet.email,
         password: "password#{Faker::Code.nric}"
@@ -51,7 +51,7 @@ User.all.each do |x|
         3.times do
             Activity.create!(
             user_id: x.id,
-            title: "#{random_activity.capitalize} classes"
+            title: "#{random_activity.capitalize} classes",
             description: "#{Faker::Quote.most_interesting_man_in_the_world} #{Faker::Quote.yoda} #{Faker::Quote.matz}",
             price: random_price,
             rating: rand(1..10),
@@ -68,7 +68,7 @@ end
 # generation of users-parents
 5.times do
     User.create!(
-        name: Faker::Name.unique.name, 
+        name: Faker::Name.unique.name,
         role: "parent",
         email: Faker::Internet.email,
         password: "password#{Faker::Code.nric}"

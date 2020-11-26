@@ -23,8 +23,8 @@ ActiveRecord::Schema.define(version: 2020_11_26_070034) do
     t.float "price"
     t.float "rating"
     t.date "date"
-    t.datetime "start_time"
-    t.datetime "end_time"
+    t.integer "start_time"
+    t.integer "end_time"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "main_photo"
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2020_11_26_070034) do
   create_table "bookings", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "activity_id", null: false
-    t.boolean "confirmed"
+    t.boolean "confirmed", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["activity_id"], name: "index_bookings_on_activity_id"
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 2020_11_26_070034) do
     t.string "phone_number"
     t.string "profile_picture"
     t.string "name"
+    t.string "role"
     t.boolean "admin", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

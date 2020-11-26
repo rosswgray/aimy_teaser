@@ -1,9 +1,7 @@
-json.extract! @activity, :user_id, :title, :image, :description, :price, :rating, :date, :start_time, :end_time
+json.extract! @activity, :title, :photos, :description, :price, :rating, :date, :start_time, :end_time
+json.organizer_id @activity.user_id
 
-json.array! @bookings do |b|
-  json.extract! b, :user_id, :activity_id, :confirmed
-
-  # json.parent do
-  #   json
-  # end
+json.bookings @bookings do |b|
+  json.parent_id b.user_id
+  json.extract! b, :activity_id, :confirmed
 end

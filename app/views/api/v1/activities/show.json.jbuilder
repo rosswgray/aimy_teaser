@@ -3,7 +3,7 @@ json.extract! @activity, :user_id, :title, :image, :description, :price, :rating
 json.array! @bookings do |b|
   json.extract! b, :user_id, :activity_id, :confirmed
 
-  json.parent do
-    json
-  end
+  # json.parent do
+  #   json
+  # end
 end

@@ -21,5 +21,4 @@ class LoginController < ApplicationController
       user: @user
     }
   end
-
 end

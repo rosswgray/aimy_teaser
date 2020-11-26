@@ -38,7 +38,7 @@ puts "deleting previous seed"
 # generation of users: organizers
 10.times do
     User.create!(
-        name: Faker::Name.unique.name, 
+        name: Faker::Name.unique.name,
         role: "organizer",
         email: Faker::Internet.email,
         password: "password#{Faker::Code.nric}"

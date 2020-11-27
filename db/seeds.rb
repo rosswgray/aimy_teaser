@@ -22,6 +22,16 @@ def random_activity
     return activities_list.sample
 end
 
+def random_photo
+    photos = ['https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3697007927,148268648&fm=26&gp=0.jpg' , 'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=266708937,4181130033&fm=26&gp=0.jpg', 'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1365517084,956365332&fm=26&gp=0.jpg', 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=396141530,2076516179&fm=26&gp=0.jpg', 'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1152139501,4051271736&fm=26&gp=0.jpg', 'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2035851909,1599990570&fm=26&gp=0.jpg', 'https://ns-strategy.cdn.bcebos.com/ns-strategy/upload/fc_big_pic/part-00697-3607.jpg', 'https://ns-strategy.cdn.bcebos.com/ns-strategy/upload/fc_big_pic/part-00768-186.jpg', 'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=24740081,2489409541&fm=26&gp=0.jpg']
+    return photos.sample
+end
+
+def random_location
+    locations = %w[Putuo Changning Jing'an Hongkou Huangpu Xuhui Yangpu Minhang Jiading Baoshan Chongming Pudong]
+    return locations.sample
+end
+
 def random_capactiy
     capacities = [5, 10, 15, 20]
     return capacities.sample
@@ -65,11 +75,12 @@ User.all.each do |x|
             description: "#{Faker::Quote.most_interesting_man_in_the_world} #{Faker::Quote.yoda} #{Faker::Quote.matz}",
             price: random_price,
             capacity: random_capactiy,
-            rating: rand(1..10),
+            location: random_location,
+            rating: rand(1..3),
             date: random_date,
             start_time: rand(9..13),
             end_time: rand(14..18),
-            main_photo: "https://picsum.photos/85")
+            main_photo: random_photo)
         end
     end
     puts "1 organizer has been created"

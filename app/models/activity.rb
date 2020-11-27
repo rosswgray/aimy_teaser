@@ -10,8 +10,6 @@ class Activity < ApplicationRecord
     organizer: [:name]
   },
   using: {
-      tsearch: { prefix: true },
-    }
-
-  
+    tsearch: { prefix: true },
+  }
 end

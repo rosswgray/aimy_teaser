@@ -1,4 +1,4 @@
-json.extract! @activity, :id, :title, :main_photo, :photos, :description, :capacity, :price, :rating, :date, :start_time, :end_time
+json.extract! @activity, :id, :title, :main_photo, :photos, :description, :capacity, :price, :rating, :location, :date, :start_time, :end_time
 
 json.organizer do
   json.organizer_id @activity.user_id

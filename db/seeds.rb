@@ -80,7 +80,8 @@ User.all.each do |x|
             date: random_date,
             start_time: rand(9..13),
             end_time: rand(14..18),
-            main_photo: random_photo)
+            main_photo: random_photo,
+            photos: [])
         end
     end
     puts "1 organizer has been created"

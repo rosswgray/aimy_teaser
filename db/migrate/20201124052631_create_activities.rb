@@ -4,12 +4,14 @@ class CreateActivities < ActiveRecord::Migration[6.0]
       t.references :user, null: false, foreign_key: true
       t.string :title
       t.string :description
-      t.string :photos
+      t.string :main_photo
+      t.string :photo_1
+      t.string :photo_2
+      t.string :photo_3
       t.float :price
       t.float :rating
-      t.date :date
-      t.integer :start_time
-      t.integer :end_time
+      t.float :latitude
+      f.float :longitude
 
       t.timestamps
     end

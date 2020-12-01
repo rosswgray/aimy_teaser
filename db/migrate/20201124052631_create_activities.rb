@@ -11,7 +11,7 @@ class CreateActivities < ActiveRecord::Migration[6.0]
       t.float :price
       t.float :rating
       t.float :latitude
-      f.float :longitude
+      t.float :longitude
 
       t.timestamps
     end

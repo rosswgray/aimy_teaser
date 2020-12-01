@@ -1,7 +1,7 @@
 class Activity < ApplicationRecord
   # belongs_to :organizer, class_name: "User"
   belongs_to :organizer, class_name: "User", foreign_key: :user_id
-  has_many :sessions
+  has_many :sessions, dependent: :destroy
   has_many :instructors
 
   include PgSearch::Model

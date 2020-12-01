@@ -32,78 +32,106 @@ def random_location
     return locations.sample
 end
 
-def random_capactiy
+def random_capacity
     capacities = [5, 10, 15, 20]
     return capacities.sample
 end
 
 # Clean the database
+puts "Deleting previous seed..."
+Session.delete_all
 Activity.delete_all
+Instructor.delete_all
 User.delete_all
-puts "deleting previous seed"
-
-# Generation of users-organizers and activities
-# provider = ["yahoo.com", "gmail.com", "outlook.com", "zoho.com"].sample
+puts "Previous seed deleted!"
 
 # generation of users: organizers
 10.times do
-    User.create!(
-        name: Faker::Name.unique.name,
-        role: "organizer",
-        email: Faker::Internet.email,
-        password: "password#{Faker::Code.nric}"
+  user = User.create!(
+    name: Faker::Name.unique.name,
+    is_organizer: true,
+    is_parent: false,
+    email: Faker::Internet.email,
+    password: "password#{Faker::Code.nric}",
+    phone_number: Faker::PhoneNumber.cell_phone,
     )
+  puts "organizer #{user.name} has been created"
 end
 
 # generation of users: parents
 5.times do
-    User.create!(
-        name: Faker::Name.unique.name, 
-        role: "parent",
-        email: Faker::Internet.email,
-        password: "password#{Faker::Code.nric}"
-    )
-    puts "1 parent has been created"
+  User.create!(
+    name: Faker::Name.unique.name, 
+    is_organizer: false,
+    is_parent: true,
+    email: Faker::Internet.email,
+    password: "password#{Faker::Code.nric}",
+    phone_number: Faker::PhoneNumber.cell_phone
+  )
+  puts "1 parent has been created"
 end
 
 User.all.each do |x|
-    if x.role == "organizer"
-        3.times do
-            Activity.create!(
-            user_id: x.id,
-            title: "#{random_activity.capitalize} classes",
-            description: "#{Faker::Quote.most_interesting_man_in_the_world} #{Faker::Quote.yoda} #{Faker::Quote.matz}",
-            price: random_price,
-            capacity: random_capactiy,
-            location: random_location,
-            rating: rand(1..3),
-            date: random_date,
-            start_time: rand(9..13),
-            end_time: rand(14..18),
-            main_photo: random_photo,
-            photos: [])
-        end
+  if x.is_organizer == true
+    3.times do
+      Activity.create!(
+        user_id: x.id,
+        title: "#{random_activity.capitalize} classes",
+        description: "#{Faker::Quote.most_interesting_man_in_the_world}. #{Faker::Quote.yoda} #{Faker::Quote.matz}",
+        price: random_price,
+        latitude: 31.224361,
+        longitude: 121.469170,
+        rating: rand(1..3),
+        main_photo: random_photo
+        )
     end
-    puts "1 organizer has been created"
-    puts "3 activities have been created"
+    puts "3 activities have been created for #{x.name}"
+    3.times do
+      Instructor.create(
+        user_id: x.id,
+        name: Faker::Name.unique.name,
+        years_experience: rand(1..10),
+        date_started: Date.parse('1st Sep 2012'),
+        verified: true
+      )
+    end
+    puts "3 instructors have been created for #{x.name}"
+  end
+end
+
+# seeds sessions for each activity
+Activity.all.each do |activity|
+#   p activity.organizer.instructors
+  5.times do
+    Session.create(
+      activity_id: activity.id,
+      instructor_id: activity.organizer.instructors.sample.id,
+      title: "Wednesday #{activity.title}",
+      capacity: random_capacity,
+      price: random_price,
+      start_time: DateTime.parse('12th Dec 2020 01:00:00 PM'),
+      end_time: DateTime.parse('12th Dec 2020 02:00:00 PM')
+    )
+  end
+  puts "5 sessions created for #{activity.title}"
 end
 
 # makes an array of the all the parents
 parents = []
 User.all.each do |user|
-    if user.role == 'parent'
-        parents.push(user)
-    end
+  if user.is_parent == true
+      parents.push(user)
+  end
 end
 
-Activity.all.each do |activity|
-    3.times do
-        Booking.create(
-            user_id: parents.sample.id,
-            activity_id: activity.id,
-            confirmed: false,
-            cancelled: false
-        )
-    end
-    puts "3 bookings have been created for #{activity.title}"
+Session.all.each do |session|
+  3.times do
+    Booking.create(
+      user_id: parents.sample.id,
+      session_id: Session.all.sample.id,
+      confirmed: false,
+      cancelled: false
+    )
+  end
+    puts "3 bookings have been created for #{session.activity.title}"
 end

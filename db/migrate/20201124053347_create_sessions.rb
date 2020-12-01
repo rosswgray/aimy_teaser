@@ -6,7 +6,7 @@ class CreateSessions < ActiveRecord::Migration[6.0]
       t.string :title
       t.datetime :start_time
       t.datetime :end_time
-      t.integer :capactiy
+      t.integer :capacity
       t.float :price
 
       t.timestamps

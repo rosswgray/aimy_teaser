@@ -13,6 +13,6 @@ class ActivitiesController < ApplicationController
 
   def show
     @activity = Activity.find(params[:id])
-    @bookings = @activity.bookings
+    @sessions = @activity.sessions
   end
 end

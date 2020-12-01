@@ -1,11 +1,11 @@
-json.extract! @activity, :id, :title, :main_photo, :photos, :description, :capacity, :price, :rating, :location, :date, :start_time, :end_time
+json.extract! @activity, :id, :title, :main_photo, :photo_1, :photo_2, :photo_3, :description, :price, :rating, :latitude, :longitude
 
 json.organizer do
   json.organizer_id @activity.user_id
   json.name @activity.organizer.name
 end
 
-json.bookings @bookings do |b|
-  json.parent_id b.user_id
-  json.extract! b, :activity_id, :confirmed, :cancelled
+json.sessions @sessions do |s|
+  json.session_id s.id
+  json.extract! s, :title, :start_time, :end_time
 end

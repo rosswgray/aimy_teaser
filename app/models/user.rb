@@ -4,6 +4,7 @@ class User < ApplicationRecord
 
   # organizer has many activities
   has_many :activities
+  has_many :instructors
 
   # a customer(parent) has many booked activities
   has_many :bookings

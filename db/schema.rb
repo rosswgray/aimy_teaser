@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_30_103058) do
+ActiveRecord::Schema.define(version: 2020_11_24_053348) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,17 +34,19 @@ ActiveRecord::Schema.define(version: 2020_11_30_103058) do
 
   create_table "bookings", force: :cascade do |t|
     t.bigint "user_id", null: false
+    t.bigint "session_id", null: false
     t.boolean "confirmed", default: false
     t.boolean "cancelled", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["session_id"], name: "index_bookings_on_session_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
   create_table "instructors", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "name"
-    t.integer "years_esperience"
+    t.integer "years_experience"
     t.date "date_started"
     t.string "certifications"
     t.boolean "verified"
@@ -60,7 +62,7 @@ ActiveRecord::Schema.define(version: 2020_11_30_103058) do
     t.string "title"
     t.datetime "start_time"
     t.datetime "end_time"
-    t.integer "capactiy"
+    t.integer "capacity"
     t.float "price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -95,6 +97,7 @@ ActiveRecord::Schema.define(version: 2020_11_30_103058) do
   end
 
   add_foreign_key "activities", "users"
+  add_foreign_key "bookings", "sessions"
   add_foreign_key "bookings", "users"
   add_foreign_key "instructors", "users"
   add_foreign_key "sessions", "activities"

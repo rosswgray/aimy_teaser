@@ -15,6 +15,15 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :activities
+  resources :activities do
+    resources :sessions
+  end
+
   resources :bookings
+
+  resources :users do
+    resources :bookings
+    resources :instructors
+    resources :activities
+  end
 end

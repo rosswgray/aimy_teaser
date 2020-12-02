@@ -4,6 +4,8 @@ class Activity < ApplicationRecord
   has_many :sessions, dependent: :destroy
   has_many :instructors
 
+  acts_as_taggable_on :tags
+
   include PgSearch::Model
   pg_search_scope :global_search,
   against: [:title, :description],

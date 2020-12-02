@@ -1,7 +1,9 @@
-<div class="jumbotron">
-  <h1 class="display-4"><%= @activity.title %></h1>
-  <p class="lead"><%= @activity.organizer.name %></p>
-  <hr class="my-4">
-  <p><%= @activity.description %></p>
-  <%= link_to 'Edit', edit_activity_path(@activity), class: "btn btn-primary btn-lg", role: "button" %>
+<div class="container w-75 mt-4">
+  <div class="jumbotron">
+    <h1 class="display-4"><%= @activity.title %></h1>
+    <p class="lead"><%= @activity.organizer.name %></p>
+    <hr class="my-4">
+    <p><%= @activity.description %></p>
+    <%= link_to 'Edit', edit_activity_path(@activity), class: "btn btn-primary btn-lg", role: "button" %>
+  </div>
 </div>

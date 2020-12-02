@@ -1,4 +1,4 @@
 class ActivityTag < ApplicationRecord
-    belongs_to :activity
-    belongs_to :category
-  end
+  belongs_to :activity
+  belongs_to :tag
+end

@@ -1,3 +1,3 @@
 class Tag < ApplicationRecord
-    has_many :activity_tags
-  end
+  has_many :activity_tags
+end

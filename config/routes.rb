@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   post '/login', to: 'login#login'
 
+  # API Routes
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       resources :activities, only: [ :index, :show, :update ] do
@@ -15,6 +16,7 @@ Rails.application.routes.draw do
     end
   end
 
+  # Website Routes
   resources :activities do
     resources :sessions
   end

@@ -6,7 +6,7 @@ class Api::V1::ActivitiesController < Api::V1::BaseController
       # @activities = Activity.joins(:organizer).where("title ILIKE :query, description ILIKE :query, organizers.name ILIKE :query", query: "%#{query}%")
     else
       @activities = Activity.all
-      p @activities
+      # p @activities
     end
     # KEEP LINE 12 commented out
     # render json: @activities #Just for testing

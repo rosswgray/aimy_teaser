@@ -4,16 +4,20 @@
   <div class="row row-cols-1 row-cols-md-2">
 
     <% @activities.each do |activity| %>
-      <div class="col mb-4">
-        <div class="card">
-          <%= image_tag activity.main_photo, class: "card-img-top"  %>
-          <div class="card-body">
-            <h5 class="card-title"><%= activity.title %></h5>
-            <h6><%= activity.organizer.name %></h6>
-            <p class="card-text"><%= activity.description %></p>
-          </div>
+
+      <%= link_to activity, style: "text-decoration: none; color: black" do %>
+        <div class="col mb-4">
+          <div class="card">
+            <%= image_tag activity.main_photo, class: "card-img-top"  %>
+            <div class="card-body">
+              <h5 class="card-title"><%= activity.title %></h5>
+              <h6><%= activity.organizer.name %></h6>
+              <p class="card-text"><%= activity.description %></p>
+            </div>
+          </div>        
         </div>
-      </div>
+      <% end  %>
+
     <% end %>
 
   </div>

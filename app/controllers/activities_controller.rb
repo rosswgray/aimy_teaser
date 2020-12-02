@@ -11,11 +11,14 @@ class ActivitiesController < ApplicationController
     # end
   end
 
-  def edit; end
+  def edit
+    @activity = Activity.find(params[:id])
+  end
 
   def update
-    @activty.update(activity_params)
-    render :new
+    @activity = Activity.find(params[:id])
+    @activity.update(activity_params)
+    redirect_to activity_path(@activity)
   end
 
   def show

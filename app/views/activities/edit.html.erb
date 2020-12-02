@@ -1,6 +1,8 @@
-<h1>Editing Activity</h1>
-
-<%= render 'form', activity: @activity %>
-
-<%= link_to 'Index', @activities %> |
-<%= link_to 'Back', activity_path %>
+<div class="container">
+  <h1>Edit Activity</h1>
+  
+  <%= render 'form', activity: @activity %>
+  
+  <%= link_to 'Index', activities_path %> |
+  <%= link_to 'Back', activity_path %>
+</div>

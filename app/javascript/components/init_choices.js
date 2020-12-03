@@ -7,6 +7,7 @@ const initChoices = () => {
     console.log('inside initChoices, element found!')
     new Choices(element, {
       removeItems: true,
+      addItems: true,
       removeItemButton: true,
     });
   }

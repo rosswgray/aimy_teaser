@@ -16,4 +16,5 @@ class Api::V1::ActivitiesController < Api::V1::BaseController
     @activity = Activity.find(params[:id])
     @sessions = @activity.sessions
   end
+
 end

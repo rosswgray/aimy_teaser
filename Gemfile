@@ -39,6 +39,7 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'pg_search', '~> 2.3.0'
 gem 'acts-as-taggable-on'
+gem 'acts_as_favoritor', github: 'jonhue/acts_as_favoritor'
 
 group :development, :test do
   gem 'pry-byebug'

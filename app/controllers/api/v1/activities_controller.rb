@@ -17,4 +17,21 @@ class Api::V1::ActivitiesController < Api::V1::BaseController
     @sessions = @activity.sessions
   end
 
+  def favorite
+    activity = Activity.find(param[:id])
+    user = current_user
+    user.favorite(activity)
+  end
+
+  def unfavorite
+    activity = Activity.find(param[:id])
+    user = current_user
+    user.unfavorite(activity)
+  end
+
+  def favorited
+    user = current_user
+    user.all_favorited
+  end
+
 end

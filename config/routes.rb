@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   # API Routes
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
-      resources :activities, only: [ :index, :show, :update ] do
+      resources :activities, only: [ :index, :show, :update, :favorite, :unfavorite, :favorited ] do
         resources :bookings, only: [ :create, :update ]
         resources :users, only: [ :index, :show ]
       end

@@ -1,6 +1,7 @@
 RailsAdmin.config do |config|
 
   ### Popular gems integration
+  config.included_models = [ "User", "Booking", "Session", "Instructor", "Tag", "Activity" ]
 
   ## == Devise ==
   config.authenticate_with do

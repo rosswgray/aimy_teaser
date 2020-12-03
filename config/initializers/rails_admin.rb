@@ -1,7 +1,7 @@
 RailsAdmin.config do |config|
 
   ### Popular gems integration
-  config.included_models = [ "User", "Session", "Instructor", "Activity" ]
+  config.included_models = [ "Session", "Instructor", "Activity" ]
 
   ## == Devise ==
   config.authenticate_with do

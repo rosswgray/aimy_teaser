@@ -7,8 +7,7 @@ end
 
 json.sessions @sessions do |s|
   json.session_id s.id
-  json.extract! s, :title, :price, :address
-  json.address s.address
+  json.extract! s, :title, :price
   json.date s.start_time.to_date
   json.start_hour s.start_time.hour
   json.start_min s.start_time.min

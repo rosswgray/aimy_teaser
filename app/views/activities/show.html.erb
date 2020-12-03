@@ -2,9 +2,9 @@
   <div class="jumbotron">
     <h1 class="display-4"><%= @activity.title %></h1>
     <p class="lead"><%= @activity.organizer.name %></p>
+    <p><%= @activity.address %></p>
     <hr class="my-4">
     <p><%= @activity.description %></p>
-    <p><%= @activity.address %></p>
 
     <% @activity.tag_list.each do |tag| %>
       <span>

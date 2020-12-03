@@ -41,6 +41,12 @@ def random_capacity
     return capacities.sample
 end
 
+def random_address
+  addresses = ["常德路500弄,
+  近新闸路", "龙吴路947号, 近百色路", "龙吴路947号, 近百色路", "军工路2000号, 近嫩江路"]
+  return addresses.sample
+end
+
 # Clean the database
 puts "Deleting previous seed..."
 Session.delete_all
@@ -83,6 +89,7 @@ User.all.each do |x|
         title: "#{random_activity.capitalize} classes",
         description: "#{Faker::Quote.most_interesting_man_in_the_world}. #{Faker::Quote.yoda} #{Faker::Quote.matz}",
         price: random_price,
+        address: random_address,
         latitude: 31.224361,
         longitude: 121.469170,
         rating: rand(1..3),

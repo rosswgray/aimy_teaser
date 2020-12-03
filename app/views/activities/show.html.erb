@@ -4,6 +4,7 @@
     <p class="lead"><%= @activity.organizer.name %></p>
     <hr class="my-4">
     <p><%= @activity.description %></p>
+    <p><%= @activity.address %></p>
 
     <% @activity.tag_list.each do |tag| %>
       <span>
@@ -14,6 +15,5 @@
     <%= link_to 'Edit', edit_activity_path(@activity), class: "btn btn-primary btn-lg", role: "button" %>
   </div>
 
-  <h2>Photo Galler</h2>
+  <h2>Photo Gallery</h2>
     
-</div>

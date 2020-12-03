@@ -25,10 +25,12 @@ require("channels")
 // External imports
 import "bootstrap";
 
-// Internal imports, e.g:
-// import { initSelect2 } from '../components/init_select2';
+import 'select2/dist/css/select2.css';
+
+import { multipleSelect } from "../components/select";
+import { initChoices } from "../components/init_choices";
 
 document.addEventListener('turbolinks:load', () => {
-  // Call your functions here, e.g:
-  // initSelect2();
+  multipleSelect();
+  initChoices();
 });

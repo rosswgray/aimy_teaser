@@ -3,11 +3,11 @@ Rails.application.routes.draw do
   root to: 'activities#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
-  post '/login', to: 'login#login'
-
+  
   # API Routes
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
+      post '/login', to: 'login#login'
       resources :activities, only: [ :index, :show, :update ] do
         resources :bookings, only: [ :create, :update ]
         resources :users, only: [ :index, :show ]

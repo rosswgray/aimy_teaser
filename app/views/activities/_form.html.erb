@@ -8,7 +8,7 @@
     <%= f.input :main_photo %>
     <%= f.input :photo_1 %>
     <%# tag input goes here %>
-    <%= f.input :tags, collection: Tag.all, input_html: { multiple: true, class: 'multiple-select' }, include_hidden: false %>
+    <%= f.input :tags, collection: Tag.all, input_html: { multiple: true, class: 'multiple-select', style: 'width: 100%' }, include_hidden: false %>
   </div>
 
   <div class="form-actions">

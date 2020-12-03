@@ -40,7 +40,7 @@ end
 def random_address
   addresses = ["常德路500弄,
   近新闸路", "龙吴路947号, 近百色路", "龙吴路947号, 近百色路", "军工路2000号, 近嫩江路"]
-  return capacitiesaddresses.sample
+  return addresses.sample
 end
 
 # Clean the database

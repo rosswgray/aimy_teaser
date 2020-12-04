@@ -1,7 +1,7 @@
 class CreateInstructors < ActiveRecord::Migration[6.0]
   def change
     create_table :instructors do |t|
-      t.references :user, null: false, foreign_key: true
+      t.references :user, null: false, foreign_key: true, foreign_key: {on_delete: :cascade}
       t.string :name
       t.integer :years_experience
       t.date :date_started

@@ -1,6 +1,6 @@
 class Session < ApplicationRecord
   belongs_to :activity
-  belongs_to :instructor, polymorphic: true
+  belongs_to :instructor
 
   has_many :bookings, dependent: :destroy
 
@@ -8,3 +8,6 @@ class Session < ApplicationRecord
   # uncommenting the below line will break rails_admin for sessions
   # has_many :users, through: :bookings
 end
+
+# removed from line 3
+# , polymorphic: true

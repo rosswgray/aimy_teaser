@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_many :instructors
 
   # a customer(parent) has many booked activities
-  # has_many :bookings
+  has_many :bookings
   has_many :sessions, through: :bookings, foreign_key: :user_id
 
   # an organizer has many booked sessions that customers attend

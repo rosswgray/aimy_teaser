@@ -1,6 +1,6 @@
 class Session < ApplicationRecord
   belongs_to :activity
-  belongs_to :instructor
+  belongs_to :instructor, polymorphic: true
 
   has_many :bookings, dependent: :destroy
 

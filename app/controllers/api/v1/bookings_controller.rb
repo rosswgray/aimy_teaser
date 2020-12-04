@@ -21,6 +21,17 @@ class Api::V1::BookingsController < Api::V1::BaseController
     end
   end
 
+  def update
+    set_parent
+    set_activity
+    @booking = Booking.find(booking_params)
+    if @booking.update(booking_params)
+      render json: { booking: @booking, status: :updated }
+    else
+      render_error
+    end
+  end
+
   private
 
   def set_parent
@@ -32,7 +43,7 @@ class Api::V1::BookingsController < Api::V1::BaseController
   end
 
   def booking_params
-    params.require(:booking).permit(:user_id, :activity_id, :confirmed)
+    params.require(:booking).permit(:user_id, :session_id, :confirmed, :cancelled)
   end
 
   def render_error

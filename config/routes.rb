@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       post '/login', to: 'login#login'
       resources :activities, only: [ :index, :show, :update ] do
-        resources :bookings, only: [ :create, :update ]
+        resources :bookings, only: [ :index, :show, :create, :update ]
         resources :users, only: [ :index, :show ]
       end
       resources :users

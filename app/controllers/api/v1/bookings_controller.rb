@@ -1,6 +1,9 @@
 class Api::V1::BookingsController < Api::V1::BaseController
+  skip_before_action :verify_authenticity_token, only: [ :create, :update ]
+
   def index
-    @bookings = Booking.all
+    set_parent
+    @bookings = @parent.bookings
     # render json: @bookings #Just for testing
   end
 
@@ -10,10 +13,10 @@ class Api::V1::BookingsController < Api::V1::BaseController
 
   def create
     set_parent
-    set_activity
+    set_session
     @booking = Booking.new(booking_params)
     @booking.parent = @parent
-    @booking.activity = @activity
+    @booking.session = @session
     if @booking.save
       render json: { booking: @booking, status: :success }
     else
@@ -23,7 +26,7 @@ class Api::V1::BookingsController < Api::V1::BaseController
 
   def update
     set_parent
-    set_activity
+    set_session
     @booking = Booking.find(booking_params)
     if @booking.update(booking_params)
       render json: { booking: @booking, status: :updated }
@@ -38,8 +41,8 @@ class Api::V1::BookingsController < Api::V1::BaseController
     @parent = User.find(params[:user_id])
   end
 
-  def set_activity
-    @activity = Activity.find(params[:activity_id])
+  def set_session
+    @session = Session.find(params[:session_id])
   end
 
   def booking_params

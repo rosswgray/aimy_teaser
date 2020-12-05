@@ -19,4 +19,3 @@ json.activities do
     end
   end
 end
-

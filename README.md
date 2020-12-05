@@ -42,10 +42,3 @@ git pull origin master
 navigate to /mnt/c/Users/YOURNAME/WeChatProjects/aimy_teaser_wx
 gst # should be clean, check with lead if not
 git pull origin main
-
-
-## DEV NOTE
-
-- recently removed from package.json
- "choices.js": "^9.0.1",
- "select2": "^4.0.13"

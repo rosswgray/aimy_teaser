@@ -13,6 +13,15 @@ class ActivitiesController < ApplicationController
     end
   end
 
+  def new
+    @activity = Activity.new
+  end
+
+  def create
+    @activity.create(activity_params)
+    redirect_to activities_path
+  end
+
   def edit
     @activity = Activity.find(params[:id])
   end

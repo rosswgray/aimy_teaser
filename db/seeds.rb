@@ -120,7 +120,7 @@ User.all.each do |x|
         verified: true
         )
         file = 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1607329696182&di=3c5d66f40d47bae1f95ed6dbbe5477d1&imgtype=0&src=http%3A%2F%2Fimg4.imgtn.bdimg.com%2Fit%2Fu%3D4217883734%2C2989517866%26fm%3D214%26gp%3D0.jpg'
-        instructor.profile_pic.attach(io: open(file), filename: "#{activity.title}_main")
+        instructor.profile_pic.attach(io: open(file), filename: "#{instructor.id}_pic")
     end
     puts "3 instructors have been created for #{x.name}"
   end

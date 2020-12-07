@@ -6,6 +6,8 @@ class User < ApplicationRecord
   has_many :activities
   has_many :instructors
 
+  has_one_attached :profile_picture
+
   # a customer(parent) has many booked activities
   has_many :bookings
 

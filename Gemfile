@@ -24,7 +24,8 @@ gem 'jbuilder', '~> 2.7'
 gem 'rails_admin', '~> 2.0'
 
 # Use Active Storage variant
-# gem 'image_processing', '~> 1.2'
+gem 'image_processing', '~> 1.2'
+gem 'activestorage-aliyun'
 
 # Rest-client makes HTTP requests
 gem 'rest-client'

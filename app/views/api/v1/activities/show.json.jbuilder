@@ -1,5 +1,7 @@
 json.extract! @activity, :id, :title, :description, :rating, :latitude, :longitude, :address
-json.main_photo @activity.main_photo.service_url
+unless @activity.main_photo.blank?
+  json.main_photo @activity.main_photo.service_url
+end
 unless @activity.photo_1.blank?
   json.photo_1 @activity.photo_1.service_url
 end

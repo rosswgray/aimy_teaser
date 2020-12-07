@@ -1,5 +1,7 @@
 class ActivitiesController < ApplicationController
   def index
+    ## check if activity.main_photo.blank?
+    ### @activty_url = ....
     @activities = Activity.includes(:sessions)
 
     query = params[:query]

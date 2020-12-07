@@ -57,6 +57,10 @@ Instructor.delete_all
 User.delete_all
 puts "Previous seed deleted!"
 
+wendy = User.create!(name: "Wendy Tseng", is_organizer: true, is_admin: true, is_parent: false, email: 'wendytseng0622@gmail.com', password: '123456')
+kyle = User.create!(name: "Kyle Hayes", is_organizer: true, is_admin: true, is_parent: false, email: 'footballshanghai@gmail.com', password: '123456')
+ross = User.create!(name: "Ross Gray", is_organizer: true, is_admin: true, is_parent: false, email: 'rosswgray@gmail.com', password: '123456')
+
 # generation of users: organizers
 10.times do
   user = User.create!(

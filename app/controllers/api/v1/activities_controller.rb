@@ -22,5 +22,4 @@ class Api::V1::ActivitiesController < Api::V1::BaseController
       rescue NoMethodError => e
     end 
   end
-
 end

@@ -1,6 +1,8 @@
 <div class="container w-75 mt-4">
   <div class="jumbotron">
+    <span class="small">id: <%= @activity.id %></span>
     <h1 class="display-4"><%= @activity.title %></h1>
+
     <p class="lead"><%= @activity.organizer.name %></p>
     <p><%= @activity.address %></p>
     <hr class="my-4">
@@ -16,4 +18,17 @@
   </div>
 
   <h2>Photo Gallery</h2>
-    
+  <div class="container w-100 mb-5">
+    <div class="row row-cols-1 row-cols-md-2">
+      <%= image_tag @activity.main_photo, class: "" %>
+      <% unless @activity.photo_1.blank? %>
+        <%= image_tag @activity.photo_1, class: "" %>
+      <% end %>
+      <% unless @activity.photo_2.blank? %>
+        <%= image_tag @activity.photo_2, class: "" %>
+      <% end %>
+      <% unless @activity.photo_3.blank? %>
+        <%= image_tag @activity.photo_3, class: "" %>
+      <% end %>
+    </div>
+  </div>

@@ -1,6 +1,6 @@
 class Instructor < ApplicationRecord
   belongs_to :user
   has_many :sessions
-  has_many :bookings, through: :sessions
-  has_many :activities, through: :sessions
+
+  has_one_attached :profile_pic
 end

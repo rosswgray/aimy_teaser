@@ -8,8 +8,11 @@ class ActivitiesController < ApplicationController
 
     else
       @activities = Activity.all
-      # p @activities
     end
+  end
+
+  def new
+    @activity = Activity.new
   end
 
   def create

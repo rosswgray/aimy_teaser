@@ -6,11 +6,11 @@
     <hr class="my-4">
     <p><%= @activity.description %></p>
 
-    <% @activity.tag_list.each do |tag| %>
-      <span>
+    <%# @activity.tag_list.each do |tag| %>
+      <%# <span> %>
         <%#= link_to tag, tagged_activities_path(tag: tag) %>
-      </span>
-    <% end %>
+      <%# </span> %>
+    <%# end %>
 
     <%= link_to 'Edit', edit_activity_path(@activity), class: "btn btn-primary btn-lg", role: "button" %>
   </div>

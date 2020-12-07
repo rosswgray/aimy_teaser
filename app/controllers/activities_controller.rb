@@ -8,7 +8,6 @@ class ActivitiesController < ApplicationController
 
     else
       @activities = Activity.all
-      # p @activities
     end
   end
 
@@ -45,6 +44,6 @@ class ActivitiesController < ApplicationController
   private
 
   def activity_params
-    params.require(:activity).permit(:title, :description, :main_photo, :photo_1, :photo_2, :photo_3, :price, :rating, :address, :latitude, :longitude, tag_list: [])
+    params.require(:activity).permit(:title, :description, :main_photo, :photo_1, :photo_2, :photo_3, :price, :rating, :address, :latitude, :longitude, :tag_list)
   end
 end

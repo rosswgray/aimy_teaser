@@ -24,12 +24,14 @@ gem 'jbuilder', '~> 2.7'
 gem 'rails_admin', '~> 2.0'
 
 # Use Active Storage variant
-# gem 'image_processing', '~> 1.2'
+gem 'image_processing', '~> 1.2'
+gem 'activestorage-aliyun'
 
 # Rest-client makes HTTP requests
 gem 'rest-client'
 # Devise for authenticating admin users
 gem 'devise'
+# gem 'open-uri'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false

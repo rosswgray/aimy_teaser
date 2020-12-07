@@ -1,4 +1,5 @@
 require 'faker'
+require 'open-uri'
 
 # Single methods for randomization
 def random_date
@@ -27,7 +28,7 @@ def activity_tags
 end
 
 def random_photo
-    photos = ['https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1326783306,1418284040&fm=15&gp=0.jpg', 'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3601247738,476745752&fm=15&gp=0.jpg', 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2952210967,2903812078&fm=15&gp=0.jpg', 'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2064454071,2006766602&fm=26&gp=0.jpg', 'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=4272943212,203755002&fm=26&gp=0.jpg','https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3563627696,876221058&fm=26&gp=0.jpg', 'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1559584591,903918518&fm=26&gp=0.jpg', 'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=34765916,1158085550&fm=26&gp=0.jpg', 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=988181763,2961681634&fm=26&gp=0.jpg', 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1497377693,1489169948&fm=15&gp=0.jpg', 'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3339855698,1538325319&fm=26&gp=0.jpg', 'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1455780492,1433340041&fm=15&gp=0.jpg', 'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3145524176,2802384121&fm=15&gp=0.jpg']
+    photos = ['https://picsum.photos/500']
     return photos.sample
 end
 
@@ -49,6 +50,7 @@ end
 
 # Clean the database
 puts "Deleting previous seed..."
+Booking.delete_all
 Session.delete_all
 Activity.delete_all
 Instructor.delete_all
@@ -84,7 +86,7 @@ end
 User.all.each do |x|
   if x.is_organizer == true
     3.times do
-      Activity.create!(
+      activity = Activity.new(
         user_id: x.id,
         title: "#{random_activity.capitalize} classes",
         description: "#{Faker::Quote.most_interesting_man_in_the_world}. #{Faker::Quote.yoda} #{Faker::Quote.matz}",
@@ -93,8 +95,11 @@ User.all.each do |x|
         latitude: 31.224361,
         longitude: 121.469170,
         rating: rand(1..3),
-        main_photo: random_photo
         )
+      file = 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1607329696182&di=3c5d66f40d47bae1f95ed6dbbe5477d1&imgtype=0&src=http%3A%2F%2Fimg4.imgtn.bdimg.com%2Fit%2Fu%3D4217883734%2C2989517866%26fm%3D214%26gp%3D0.jpg'
+      activity.main_photo.attach(io: open(file), filename: "#{activity.title}_main")
+
+      activity.save
     end
     puts "3 activities have been created for #{x.name}"
     3.times do

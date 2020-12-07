@@ -1,5 +1,8 @@
 <div class="container">
-  <h1>Activities Index</h1>
+  <div style="display: flex; justify-content: flex-start;">
+    <h1>Activities Index</h1>
+    <%= link_to 'create', create_activity_path(@activity), class: "btn btn-primary btn-lg", role: "button" %>
+  </div>
   
   <div class="row row-cols-1 row-cols-md-2">
 

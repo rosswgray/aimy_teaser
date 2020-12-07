@@ -60,6 +60,7 @@ puts "Previous seed deleted!"
 wendy = User.create!(name: "Wendy Tseng", is_organizer: true, is_admin: true, is_parent: false, email: 'wendytseng0622@gmail.com', password: '123456')
 kyle = User.create!(name: "Kyle Hayes", is_organizer: true, is_admin: true, is_parent: false, email: 'footballshanghai@gmail.com', password: '123456')
 ross = User.create!(name: "Ross Gray", is_organizer: true, is_admin: true, is_parent: false, email: 'rosswgray@gmail.com', password: '123456')
+arnaud = User.create!(name: "Arnaud G", is_organizer: true, is_admin: true, is_parent: false, email: 'arnaudgazielly@gmail.com', password: '123456')
 
 # generation of users: organizers
 10.times do
@@ -102,6 +103,10 @@ User.all.each do |x|
         )
       file = 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1607329696182&di=3c5d66f40d47bae1f95ed6dbbe5477d1&imgtype=0&src=http%3A%2F%2Fimg4.imgtn.bdimg.com%2Fit%2Fu%3D4217883734%2C2989517866%26fm%3D214%26gp%3D0.jpg'
       activity.main_photo.attach(io: open(file), filename: "#{activity.title}_main")
+      activity.photo_1.attach(io: open(file), filename: "#{activity.title}_1")
+      activity.photo_2.attach(io: open(file), filename: "#{activity.title}_2")
+      activity.photo_3.attach(io: open(file), filename: "#{activity.title}_3")
+
 
       activity.save
     end

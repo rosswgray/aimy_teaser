@@ -8,18 +8,13 @@ class Api::V1::ActivitiesController < Api::V1::BaseController
       @activities = Activity.all
       # p @activities
     end
-    
-  rescue NoMethodError => e  
+  rescue NoMethodError => e
     # KEEP LINE 12 commented out
     # render json: @activities #Just for testing
   end
 
   def show
-    if !activity.main_photo.blank?
-      @activity = Activity.find(params[:id])
-      @sessions = @activity.sessions
-    else
-      rescue NoMethodError => e
-    end 
+    @activity = Activity.find(params[:id])
+    @sessions = @activity.sessions
   end
 end

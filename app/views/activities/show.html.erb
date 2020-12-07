@@ -23,13 +23,13 @@
   <div class="container w-100 mb-5">
     <div class="row row-cols-1 row-cols-md-2">
       <%= image_tag @activity.main_photo, class: "" %>
-      <% unless @activity.photo_1.nil? %>
+      <% unless @activity.photo_1.blank? %>
         <%= image_tag @activity.photo_1, class: "" %>
       <% end %>
-      <% unless @activity.photo_2.nil? %>
+      <% unless @activity.photo_2.blank? %>
         <%= image_tag @activity.photo_2, class: "" %>
       <% end %>
-      <% unless @activity.photo_3.nil? %>
+      <% unless @activity.photo_3.blank? %>
         <%= image_tag @activity.photo_3, class: "" %>
       <% end %>
     </div>

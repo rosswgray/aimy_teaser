@@ -20,3 +20,6 @@ class Activity < ApplicationRecord
     tsearch: { prefix: true }
   }
 end
+
+# removed from line 5
+# , source_type: "Instructor"

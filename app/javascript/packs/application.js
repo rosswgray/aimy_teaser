@@ -31,6 +31,6 @@ import { multipleSelect } from "../components/select";
 import { initChoices } from "../components/init_choices";
 
 document.addEventListener('turbolinks:load', () => {
-  multipleSelect();
-  initChoices();
+  // multipleSelect();
+  // initChoices();
 });

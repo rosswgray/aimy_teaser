@@ -8,7 +8,9 @@ json.bookings do
       json.session_id booking.session.id
       json.title booking.session.title
       json.capacity booking.session.capacity
-      json.price booking.session.price
+      unless booking.session.instructor.profile_pic.blank?
+        json.instructor_pic booking.session.instructor.profile_pic.service_url
+      end
       json.date booking.session.start_time.to_date
       json.start_hour booking.session.start_time.hour
       json.start_min booking.session.start_time.min

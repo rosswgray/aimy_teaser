@@ -1,14 +1,21 @@
-<h1>Instructors index</h1>
-<div class="container">
+<div class="container mt-2">
+  <h1>Instructors index</h1>
   <% @instructors.each do |instructor| %>
 
     <div class="card w-75 my-1">
       <div class="card-body">
         <h5 class="card-title"><%= instructor.name %></h5>
-        <p class="card-text"><%= instructor.years_experience %> years experience</p>
-        <p class="card-text">Started at: <%= instructor.date_started %></p>
-        <p class="card-text">Bio: <%= instructor.blurb %></p>
-        <p class="card-text">Certifications: <%= instructor.certifications %></p>
+        <div class="d-flex">
+          <div class="container">
+            <p class="card-text"><%= instructor.years_experience %> years experience</p>
+            <p class="card-text">Started at: <%= instructor.date_started %></p>
+            <p class="card-text">Bio: <%= instructor.blurb %></p>
+            <p class="card-text">Certifications: <%= instructor.certifications %></p>
+          </div>
+          <div>
+            <%= image_tag instructor.profile_pic, class: "avatar" %>
+          </div>
+        </div>
       </div>
     </div>
     

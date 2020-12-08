@@ -15,12 +15,16 @@ end
 json.organizer do
   json.organizer_id @activity.user_id
   json.name @activity.organizer.name
+  json.phone_number @activity.organizer.phone_number
 end
 
 json.sessions @sessions do |s|
   json.session_id s.id
   json.extract! s, :title, :price
   json.instructor_id s.instructor.id
+  unless s.instructor.profile_pic.blank?
+    json.instructor_pic s.instructor.profile_pic.service_url
+  end
   json.capacity s.capacity
   json.bookings s.bookings.length
   json.instructor_name s.instructor.name

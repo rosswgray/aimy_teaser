@@ -20,19 +20,18 @@ class Api::V1::ActivitiesController < Api::V1::BaseController
 
   def favorite
     activity = Activity.find(param[:id])
-    user = current_user
+    user = User.find(params[:user_id])
     user.favorite(activity)
   end
 
   def unfavorite
     activity = Activity.find(param[:id])
-    user = current_user
+    user = User.find(params[:user_id])
     user.unfavorite(activity)
   end
 
   def favorited
-    user = current_user
+    user = User.find(params[:user_id])
     user.all_favorited
   end
-
 end

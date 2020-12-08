@@ -19,9 +19,9 @@ json.activities do
       json.end_min activity.sessions.first.end_time.min
     end
 
-    # json.organizer do
-    #   json.organizer_id activity.user_id
-    #   json.name activity.organizer.name
-    # end
+    json.organizer do
+      json.organizer_id activity.user_id
+      json.name activity.organizer.name
+    end
   end
 end

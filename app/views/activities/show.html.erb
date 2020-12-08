@@ -20,7 +20,7 @@
   <h2>Photo Gallery</h2>
   <div class="container w-100 mb-5">
     <div class="row row-cols-1 row-cols-md-2">
-      <%= image_tag @activity.main_photo, class: "" %>
+      <%= image_tag @activity.main_photo, class: "border border-primary" %>
       <% unless @activity.photo_1.blank? %>
         <%= image_tag @activity.photo_1, class: "" %>
       <% end %>

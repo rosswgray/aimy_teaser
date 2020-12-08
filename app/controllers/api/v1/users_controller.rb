@@ -15,4 +15,8 @@ class Api::V1::UsersController < Api::V1::BaseController
       @bookings = @user.bookings
     # end
   end
+
+  def favorites
+    User.find(params[:user_id]).all_favorited
+  end
 end

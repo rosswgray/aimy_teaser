@@ -9,6 +9,7 @@ class Activity < ApplicationRecord
   has_one_attached :photo_3
 
   acts_as_taggable_on :tags
+  acts_as_favoritable
 
   include PgSearch::Model
   pg_search_scope :global_search,

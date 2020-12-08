@@ -1,10 +1,4 @@
 Rails.application.routes.draw do
-  get 'instructors/show'
-  get 'instructors/index'
-  get 'instructors/new'
-  get 'instructors/create'
-  get 'instructors/edit'
-  get 'instructors/update'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
   root to: 'activities#index'
@@ -31,6 +25,8 @@ Rails.application.routes.draw do
   end
 
   resources :bookings
+
+  resources :instructors
 
   resources :users do
     resources :bookings

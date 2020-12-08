@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_08_030441) do
+ActiveRecord::Schema.define(version: 2020_12_08_080209) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,10 +40,6 @@ ActiveRecord::Schema.define(version: 2020_12_08_030441) do
     t.bigint "user_id", null: false
     t.string "title"
     t.string "description"
-    t.string "main_photo"
-    t.string "photo_1"
-    t.string "photo_2"
-    t.string "photo_3"
     t.float "price"
     t.float "rating"
     t.float "latitude"
@@ -92,7 +88,6 @@ ActiveRecord::Schema.define(version: 2020_12_08_030441) do
     t.text "blurb"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "profile_pic"
     t.index ["user_id"], name: "index_instructors_on_user_id"
   end
 

@@ -26,6 +26,8 @@ Rails.application.routes.draw do
 
   resources :bookings
 
+  resources :instructors
+
   resources :users do
     resources :bookings
     resources :instructors

@@ -15,6 +15,5 @@ json.bookings do
       json.end_hour booking.session.end_time.hour
       json.end_min booking.session.end_time.min
     end
-    # json.instructor booking.session.instructor
   end
 end

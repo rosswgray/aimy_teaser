@@ -29,7 +29,8 @@ class Api::V1::LoginController < Api::V1::BaseController
       )
     end
     render json: {
-      user: @user
+      user_id: @user.id,
+      user_name: @user.name
     }
   end
 end

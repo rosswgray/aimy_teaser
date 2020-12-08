@@ -4,7 +4,7 @@ json.bookings do
     json.booked_at booking.created_at
     json.activity_id booking.session.activity.id
     json.activty_title booking.session.activity.title
-    json.sesssion  do
+    json.session  do
       json.session_id booking.session.id
       json.title booking.session.title
       json.capacity booking.session.capacity

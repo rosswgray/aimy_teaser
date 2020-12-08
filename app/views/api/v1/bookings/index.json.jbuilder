@@ -4,7 +4,7 @@ json.bookings do
     json.booked_at booking.created_at
     json.activity_id booking.session.activity.id
     json.activty_title booking.session.activity.title
-    json.session  do
+    json.session do
       json.session_id booking.session.id
       json.title booking.session.title
       json.capacity booking.session.capacity
@@ -15,13 +15,6 @@ json.bookings do
       json.end_hour booking.session.end_time.hour
       json.end_min booking.session.end_time.min
     end
-    json.instructor booking.session.instructor
+    # json.instructor booking.session.instructor
   end
 end
-
-# def calc_mins(num)
-#   if num >= 0 || num < 10
-#     return "0#{num}"
-#   else
-#     return num
-# end

@@ -3,6 +3,7 @@ class InstructorsController < ApplicationController
   end
 
   def index
+    @instructors = Instructor.all
   end
 
   def new

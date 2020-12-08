@@ -1,2 +1,16 @@
-<h1>Instructors#index</h1>
-<p>Find me in app/views/instructors/index.html.erb</p>
+<h1>Instructors index</h1>
+<div class="container">
+  <% @instructors.each do |instructor| %>
+
+    <div class="card w-75 my-1">
+      <div class="card-body">
+        <h5 class="card-title"><%= instructor.name %></h5>
+        <p class="card-text"><%= instructor.years_experience %> years experience</p>
+        <p class="card-text">Started at: <%= instructor.date_started %></p>
+        <p class="card-text">Bio: <%= instructor.blurb %></p>
+        <p class="card-text">Certifications: <%= instructor.certifications %></p>
+      </div>
+    </div>
+    
+  <% end %>
+</div>

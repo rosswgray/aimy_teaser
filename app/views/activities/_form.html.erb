@@ -1,22 +1,20 @@
-<div class ="container">
-  <%= simple_form_for(@activity) do |f| %>
-    <%= f.error_notification %>
-    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-  
-    <div class="form-inputs">
-      <%= f.input :title %>
-      <%= f.label :description %>
-      <%= f.text_area :description, { style: 'width: 100%' } %>
-      <%= f.input :address %>
-      <%= f.input :main_photo %>
-      <%= f.input :photo_1 %>
-      <%= f.input :photo_2 %>
-      <%= f.input :photo_3 %>
-      <%#= f.input :tag_list, collection: Tag.all, input_html: { multiple: true, style: 'width: 100%', label: "Choose some tags" }, include_hidden: false %>
-    </div>
-  
-    <div class="form-actions my-2">
-      <%= f.submit ("Submit"), class: "btn btn-primary" %>
-    </div>
-  <% end %>
-</div>
+<%= simple_form_for(@activity) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.input :title %>
+    <%= f.label :description %>
+    <%= f.text_area :description, { style: 'width: 100%' } %>
+    <%= f.input :address %>
+    <%= f.input :main_photo %>
+    <%= f.input :photo_1 %>
+    <%= f.input :photo_2 %>
+    <%= f.input :photo_3 %>
+    <%#= f.input :tag_list, collection: Tag.all, input_html: { multiple: true, style: 'width: 100%', label: "Choose some tags" }, include_hidden: false %>
+  </div>
+
+  <div class="form-actions my-2">
+    <%= f.submit ("Submit"), class: "btn btn-primary" %>
+  </div>
+<% end %>

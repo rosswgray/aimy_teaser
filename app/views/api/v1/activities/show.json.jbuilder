@@ -21,7 +21,8 @@ json.sessions @sessions do |s|
   json.session_id s.id
   json.extract! s, :title, :price
   json.instructor_id s.instructor.id
-  # json.instructor_profile_pic s.instructor.profile_pic
+  json.capacity s.capacity
+  json.bookings s.bookings.length
   json.instructor_name s.instructor.name
   json.date s.start_time.to_date
   json.start_hour s.start_time.hour

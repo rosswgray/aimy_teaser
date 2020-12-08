@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_07_070315) do
+ActiveRecord::Schema.define(version: 2020_12_08_030441) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -147,7 +147,6 @@ ActiveRecord::Schema.define(version: 2020_12_07_070315) do
     t.string "phone_number"
     t.string "open_id"
     t.string "profile_picture"
-    t.string "role"
     t.string "address"
     t.string "motto"
     t.text "description"

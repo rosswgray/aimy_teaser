@@ -8,10 +8,10 @@ json.activities do
     json.next_session do
       json.session_id activity.sessions.first.id
       json.title activity.sessions.first.title
-      json.price activity.sessions.first.price
-      json.instructor_id activity.sessions.first.instructor.id
+      # json.price activity.sessions.first.price
+      # json.instructor_id activity.sessions.first.instructor.id
       # json.instructor_profile_pic activity.sessions.first.instructor.profile_pic
-      json.instructor_name activity.sessions.first.instructor.name
+      # json.instructor_name activity.sessions.first.instructor.name
       json.date activity.sessions.first.start_time.to_date
       json.start_hour activity.sessions.first.start_time.hour
       json.start_min activity.sessions.first.start_time.min

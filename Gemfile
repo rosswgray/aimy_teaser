@@ -32,7 +32,6 @@ gem 'rest-client'
 # Devise for authenticating admin users
 gem 'devise'
 # gem 'open-uri'
-gem 'faker'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
@@ -44,6 +43,7 @@ gem 'pg_search', '~> 2.3.0'
 gem 'acts-as-taggable-on'
 
 group :development, :test do
+  gem 'faker'
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'dotenv-rails'

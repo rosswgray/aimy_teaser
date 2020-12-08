@@ -1,6 +1,8 @@
 class ActivitiesController < ApplicationController
   def index
-    @activities = Activity.all
+    ## check if activity.main_photo.blank?
+    ### @activty_url = ....
+    @activities = Activity.includes(:sessions)
 
     query = params[:query]
     if query.present?
@@ -8,8 +10,16 @@ class ActivitiesController < ApplicationController
 
     else
       @activities = Activity.all
-      # p @activities
     end
+  end
+
+  def new
+    @activity = Activity.new
+  end
+
+  def create
+    @activity.create(activity_params)
+    redirect_to activities_path
   end
 
   def edit
@@ -45,6 +55,6 @@ class ActivitiesController < ApplicationController
   private
 
   def activity_params
-    params.require(:activity).permit(:title, :description, :main_photo, :photo_1, :photo_2, :photo_3, :price, :rating, :address, :latitude, :longitude, tag_list: [])
+    params.require(:activity).permit(:title, :description, :main_photo, :photo_1, :photo_2, :photo_3, :price, :rating, :address, :latitude, :longitude, :tag_list)
   end
 end

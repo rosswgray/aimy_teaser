@@ -9,10 +9,12 @@
     <%= f.input :address %>
     <%= f.input :main_photo %>
     <%= f.input :photo_1 %>
-    <%= f.input :tag_list, collection: Tag.all, input_html: { multiple: true, style: 'width: 100%', label: "Choose some tags" }, include_hidden: false %>
+    <%= f.input :photo_2 %>
+    <%= f.input :photo_3 %>
+    <%#= f.input :tag_list, collection: Tag.all, input_html: { multiple: true, style: 'width: 100%', label: "Choose some tags" }, include_hidden: false %>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
+  <div class="form-actions my-2">
+    <%= f.submit ("Submit"), class: "btn btn-primary" %>
   </div>
 <% end %>

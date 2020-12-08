@@ -1,7 +1,7 @@
 class CreateActivities < ActiveRecord::Migration[6.0]
   def change
     create_table :activities do |t|
-      t.references :user, null: false, foreign_key: true
+      t.references :user, null: false, foreign_key: true, foreign_key: {on_delete: :cascade}
       t.string :title
       t.string :description
       t.string :main_photo

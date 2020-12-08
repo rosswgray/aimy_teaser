@@ -3,4 +3,6 @@ class Instructor < ApplicationRecord
   has_many :sessions
 
   acts_as_favoritable
+  
+  has_one_attached :profile_pic
 end

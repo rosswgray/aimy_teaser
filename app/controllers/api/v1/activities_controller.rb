@@ -13,7 +13,6 @@ class Api::V1::ActivitiesController < Api::V1::BaseController
   end
 
   def show
-    # if @activity.photo_1.attached? & @activity.photo_2.attached?
     @activity = Activity.find(params[:id])
     @sessions = @activity.sessions
   end

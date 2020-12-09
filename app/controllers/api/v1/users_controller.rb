@@ -14,6 +14,8 @@ class Api::V1::UsersController < Api::V1::BaseController
     # elsif @user.role == 'parent'
     @bookings = @user.bookings
     # end
+    p "testing"
+    p @user.all_favorites[0]
   end
 
   def favorites

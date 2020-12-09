@@ -1,15 +1,11 @@
 json.extract! @user, :id, :name, :is_parent, :is_organizer
-
-# if @user.role == 'organizer'
-#   json.activities @user.activities do |activity|
-#     json.extract! activity, :id, :title, :description, :photos, :price, :rating, :date, :start_time, :end_time
-#     json.parents activity.bookings do |booking|
-#       json.name booking.parent.name
-#       json.avatar booking.parent.profile_picture
-#     end 
-#   end
-# else
-#   json.activities @user.bookings do |booking|
-#     json.extract! booking.activity, :id, :title, :description, :photos, :price, :rating, :date, :start_time, :end_time
-#   end
-# end
+json.faved_activities do
+  json.array! @user.all_favorited do |fav|
+    json.activity_id fav.id
+    json.organizer_id fav.user_id
+    json.organizer_name fav.organizer.name
+    json.activity_title fav.title
+    json.main_photo fav.main_photo.service_url
+    json.num_of_favs fav.favoritors.length
+  end
+end

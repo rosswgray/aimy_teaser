@@ -1,4 +1,6 @@
 class Api::V1::ActivitiesController < Api::V1::BaseController
+  skip_before_action :verify_authenticity_token
+
   def index
     query = params[:query]
     if query.present?
@@ -7,20 +9,23 @@ class Api::V1::ActivitiesController < Api::V1::BaseController
     else
       @activities = Activity.all
     end
-    # rescue NoMethodError => e
-    # KEEP LINE 12 commented out
-    # render json: @activities #Just for testing
   end
 
   def show
     @activity = Activity.find(params[:id])
     @sessions = @activity.sessions
+    @user = User.find(params[:user_id])
   end
 
   def favorite
-    activity = Activity.find(param[:id])
+    activity = Activity.find(params[:id])
     user = User.find(params[:user_id])
-    user.favorite(activity)
+    p activity
+    p user
+    p user.favorited?(activity)
+    p user.favorited?(activity)
+    user.favorited?(activity) ? user.unfavorite(activity) : user.favorite(activity)
+    render json: {favorited: user.favorited?(activity)}
   end
 
   def unfavorite

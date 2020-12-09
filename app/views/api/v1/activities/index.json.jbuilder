@@ -1,11 +1,10 @@
 json.activities do
   json.array! @activities do |activity|
     json.extract! activity, :id, :title, :description, :rating, :latitude, :longitude, :address
-    unless activity.main_photo.blank?
-      json.main_photo activity.main_photo.service_url
-    end
-    # json.num_of_favs activity.favoritable_score
-    # json.liked activity.favoritor_total
+    json.main_photo activity.main_photo.service_url unless activity.main_photo.blank?
+
+    json.num_of_favs activity.favoritors.length
+
     if activity.sessions.present?
       json.next_session do
         json.session_id activity.sessions.first.id

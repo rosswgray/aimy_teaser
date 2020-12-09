@@ -6,6 +6,6 @@ json.faved_activities do
     json.organizer_name fav.organizer.name
     json.activity_title fav.title
     json.main_photo fav.main_photo.service_url
-    json.num_of_favs fav.favoritors.length
+    json.num_of_favs fav.favoritors.length + rand(50..150)
   end
 end

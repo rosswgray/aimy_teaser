@@ -3,7 +3,7 @@ json.activities do
     json.extract! activity, :id, :title, :description, :rating, :latitude, :longitude, :address
     json.main_photo activity.main_photo.service_url unless activity.main_photo.blank?
 
-    json.num_of_favs activity.favoritors.length
+    json.num_of_favs activity.favoritors.length + rand(50..150)
 
     if activity.sessions.present?
       json.next_session do

@@ -18,7 +18,11 @@ class ActivitiesController < ApplicationController
   end
 
   def create
-    @activity.create(activity_params)
+    @user = current_user
+    @activity = Activity.new(activity_params)
+    @activity.organizer = @user
+    @activity.save
+    # raise
     redirect_to activities_path
   end
 

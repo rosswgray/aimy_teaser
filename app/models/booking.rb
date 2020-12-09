@@ -2,8 +2,8 @@ class Booking < ApplicationRecord
   belongs_to :session
   # belongs_to :parent, class_name: "User", foreign_key: :user_id, polymorphic: true
   belongs_to :user
-  has_one :activity, through: :sessions
-  has_one :instructor, through: :sessions
+  # has_one :activity, through: :sessions
+  # has_one :instructor, through: :sessions
 
   def parent
     User.find(self.user_id)

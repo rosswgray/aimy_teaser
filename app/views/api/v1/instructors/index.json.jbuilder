@@ -10,6 +10,8 @@ json.instructors do
     json.bio instructor.blurb
     json.verified instructor.verified
 
-    json.activity instructor.sessions.first.activity.title
+    if instructor.sessions.first.activity.present?
+      json.activity instructor.sessions.first.activity.title
+    end
   end
 end

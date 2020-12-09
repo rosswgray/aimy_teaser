@@ -7,9 +7,7 @@ class Api::V1::ActivitiesController < Api::V1::BaseController
     else
       @activities = Activity.all
     end
-    # rescue NoMethodError => e
-    # KEEP LINE 12 commented out
-    # render json: @activities #Just for testing
+    
   end
 
   def show

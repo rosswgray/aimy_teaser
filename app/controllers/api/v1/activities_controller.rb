@@ -7,7 +7,6 @@ class Api::V1::ActivitiesController < Api::V1::BaseController
     else
       @activities = Activity.all
     end
-    
   end
 
   def show
@@ -27,7 +26,7 @@ class Api::V1::ActivitiesController < Api::V1::BaseController
     user.unfavorite(activity)
   end
 
-  def favorited
+  def favorited?
     user = User.find(params[:user_id])
     user.all_favorited
   end

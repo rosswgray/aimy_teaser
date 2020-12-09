@@ -9,11 +9,12 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       post '/login', to: 'login#login'
+      post 'favorite', to: 'activities#favorite'
+      post 'unfavorite', to: 'activities#unfavorite'
+      get 'favorites', to: 'users#favorites'  
       resources :activities, only: [ :index, :show, :update, :unfavorite, :favorited ] do
         resources :bookings, only: [ :index, :show, :create, :update ]
         resources :users, only: [ :index, :show ]
-
-        
       end
       resources :users, only: [ :index, :show ] do
         resources :bookings, only: [ :index, :show, :create, :update ]
@@ -22,9 +23,6 @@ Rails.application.routes.draw do
     end
   end
   
-  post 'favorite', to: 'activities#favorite'
-  post 'unfavorite', to: 'activities#unfavorite'
-  get 'favorites', to: 'users#favorites'  
   
   # Website Routes
   resources :activities do

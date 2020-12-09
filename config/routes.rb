@@ -22,9 +22,9 @@ Rails.application.routes.draw do
     end
   end
   
-  post 'favorite' to: 'activities#favorite'
-  post 'unfavorite' to: 'activities#unfavorite'
-  get 'favorites' to: 'users#favorites'  
+  post 'favorite', to: 'activities#favorite'
+  post 'unfavorite', to: 'activities#unfavorite'
+  get 'favorites', to: 'users#favorites'  
   
   # Website Routes
   resources :activities do

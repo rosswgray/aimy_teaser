@@ -4,6 +4,7 @@ json.activities do
     unless activity.main_photo.blank?
       json.main_photo activity.main_photo.service_url
     end
+    # json.num_of_favs activity.favoritable_score
     # json.liked activity.favoritor_total
     if activity.sessions.present?
       json.next_session do

@@ -6,10 +6,10 @@ unless @activity.photo_1.blank?
   json.photo_1 @activity.photo_1.service_url
 end
 unless @activity.photo_2.blank?
-  json.photo_2 @activity.photo_1.service_url
+  json.photo_2 @activity.photo_2.service_url
 end
 unless @activity.photo_3.blank?
-  json.photo_3 @activity.photo_1.service_url
+  json.photo_3 @activity.photo_3.service_url
 end
 
 json.organizer do

@@ -18,6 +18,7 @@ Rails.application.routes.draw do
       resources :users, only: [ :index, :show ] do
         resources :bookings, only: [ :index, :show, :create, :update ]
       end
+      resources :instructors, only: [ :index, :show ]
     end
   end
   

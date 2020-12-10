@@ -20,10 +20,6 @@ class Api::V1::ActivitiesController < Api::V1::BaseController
   def favorite
     activity = Activity.find(params[:id])
     user = User.find(params[:user_id])
-    p activity
-    p user
-    p user.favorited?(activity)
-    p user.favorited?(activity)
     user.favorited?(activity) ? user.unfavorite(activity) : user.favorite(activity)
     render json: {favorited: user.favorited?(activity)}
   end

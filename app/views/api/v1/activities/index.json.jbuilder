@@ -1,6 +1,7 @@
 json.activities do
   json.array! @activities do |activity|
-    json.extract! activity, :id, :title, :description, :rating, :latitude, :longitude, :address
+    json.extract! activity, :id, :title, :description, :rating, :latitude, :longitude, :address, :created_at
+    json.created_at activity.created_at.strftime("%Y-%m-%d %H:%M")
     json.main_photo activity.main_photo.service_url unless activity.main_photo.blank?
 
     json.num_of_favs activity.favoritors.length + rand(50..150)

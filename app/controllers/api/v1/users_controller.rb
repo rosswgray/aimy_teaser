@@ -14,11 +14,12 @@ class Api::V1::UsersController < Api::V1::BaseController
     # elsif @user.role == 'parent'
     @bookings = @user.bookings
     # end
-    p "testing"
-    p @user.all_favorites[0]
   end
 
   def favorites
     User.find(params[:user_id]).all_favorited
   end
 end
+
+# removed from line 15
+# .group_by(&:sessions).order("start_time DESC")

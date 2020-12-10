@@ -23,7 +23,8 @@ json.sessions @sessions do |s|
   json.capacity s.capacity
   json.bookings s.bookings.length
   json.instructor_name s.instructor.name
-  json.date s.start_time.to_date
+  json.day_of_week s.start_time.strftime("%A")
+  json.date s.start_time.strftime("%B %e")
   json.start_time s.start_time.strftime("%H:%M")
   json.end_time s.end_time.strftime("%H:%M")
 end

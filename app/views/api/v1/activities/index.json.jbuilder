@@ -11,9 +11,10 @@ json.activities do
         json.title activity.sessions.first.title
         json.capacity activity.sessions.first.capacity
         json.bookings activity.sessions.first.bookings.length
-        json.date activity.sessions.first.start_time.to_date
-        json.start_time s.start_time.strftime("%H:%M")
-        json.end_time s.end_time.strftime("%H:%M")
+        json.day_of_week activity.sessions.first.start_time.strftime("%a")
+        json.date activity.sessions.first.start_time.strftime("%b %e")
+        json.start_time activity.sessions.first.start_time.strftime("%H:%M")
+        json.end_time activity.sessions.first.end_time.strftime("%H:%M")
       end
     end
 

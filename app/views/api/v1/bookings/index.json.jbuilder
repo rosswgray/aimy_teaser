@@ -11,11 +11,15 @@ json.bookings do
       unless booking.session.instructor.profile_pic.blank?
         json.instructor_pic booking.session.instructor.profile_pic.service_url
       end
-      json.date booking.session.start_time.to_date
-      json.start_hour booking.session.start_time.hour
-      json.start_min booking.session.start_time.min
-      json.end_hour booking.session.end_time.hour
-      json.end_min booking.session.end_time.min
+      # json.date booking.session.start_time.to_date
+      # json.start_hour booking.session.start_time.hour
+      # json.start_min booking.session.start_time.min
+      # json.end_hour booking.session.end_time.hour
+      # json.end_min booking.session.end_time.min
+
+      json.short_date booking.session.start_time.strftime("%b %e")
+      json.start_time booking.session.start_time.strftime("%H:%M")
+      json.end_time booking.session.end_time.strftime("%H:%M")
     end
   end
 end

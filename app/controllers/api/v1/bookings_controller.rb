@@ -3,7 +3,7 @@ class Api::V1::BookingsController < Api::V1::BaseController
 
   def index
     set_parent
-    @bookings = @parent.bookings.order("created_at DESC")
+    @bookings = @parent.bookings.joins(:session).order("start_time ASC")
     # .group_by(&:session).order("start_time DESC")
   end
 

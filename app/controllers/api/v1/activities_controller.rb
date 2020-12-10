@@ -13,7 +13,7 @@ class Api::V1::ActivitiesController < Api::V1::BaseController
 
   def show
     @activity = Activity.find(params[:id])
-    @sessions = @activity.sessions
+    @sessions = @activity.sessions.order("start_time ASC")
     @user = User.find(params[:user_id])
   end
 

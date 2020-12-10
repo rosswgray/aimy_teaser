@@ -3,8 +3,8 @@ class Api::V1::BookingsController < Api::V1::BaseController
 
   def index
     set_parent
-    @bookings = @parent.bookings
-    # render json: @bookings #Just for testing
+    @bookings = @parent.bookings.order("created_at DESC")
+    # .group_by(&:session).order("start_time DESC")
   end
 
   def new

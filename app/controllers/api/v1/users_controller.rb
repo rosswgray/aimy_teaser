@@ -20,3 +20,6 @@ class Api::V1::UsersController < Api::V1::BaseController
     User.find(params[:user_id]).all_favorited
   end
 end
+
+# removed from line 15
+# .group_by(&:sessions).order("start_time DESC")

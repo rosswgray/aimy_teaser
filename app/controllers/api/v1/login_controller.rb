@@ -14,11 +14,11 @@ class Api::V1::LoginController < Api::V1::BaseController
     puts wechat_params
     @wechat_response ||= RestClient.get(URL, params: wechat_params)
     @wechat_user ||= JSON.parse(@wechat_response.body)
-    # puts "wechat response:", @wechat_response, "wx user:", @wechat_user
   end
 
   def login
     open_id = wechat_user.fetch("openid")
+    # profile_pic = wechat_user.fetch("")
     @user = User.find_by(open_id: open_id)
     # puts @user
     if @user.nil?

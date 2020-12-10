@@ -24,8 +24,6 @@ json.sessions @sessions do |s|
   json.bookings s.bookings.length
   json.instructor_name s.instructor.name
   json.date s.start_time.to_date
-  json.start_hour s.start_time.hour
-  json.start_min s.start_time.min
-  json.end_hour s.end_time.hour
-  json.end_min s.end_time.min
+  json.start_time s.start_time.strftime("%H:%M")
+  json.end_time s.end_time.strftime("%H:%M")
 end

@@ -11,16 +11,17 @@ class Api::V1::LoginController < Api::V1::BaseController
       grant_type: "authorization_code"
     }
 
-    puts wechat_params
+    # puts wechat_params
     @wechat_response ||= RestClient.get(URL, params: wechat_params)
     @wechat_user ||= JSON.parse(@wechat_response.body)
   end
 
   def login
+    # would like to find a way to save the wechat user's profile pic and name when the back end get the login request
     open_id = wechat_user.fetch("openid")
-    # profile_pic = wechat_user.fetch("")
+    # avatar = wechat_user.fetch("avatarUrl")
+    # name = wechat_user.fetch("nickName")
     @user = User.find_by(open_id: open_id)
-    # puts @user
     if @user.nil?
       @user = User.create(
         email: open_id + '@aimy.com',

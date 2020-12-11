@@ -22,6 +22,7 @@ json.sessions @sessions do |s|
   json.instructor_pic s.instructor.profile_pic.service_url unless s.instructor.profile_pic.blank?
   json.capacity s.capacity
   json.bookings s.bookings.length
+  json.full s.bookings.length >= s.capacity
   json.instructor_name s.instructor.name
   json.day_of_week s.start_time.strftime("%A")
   json.date s.start_time.strftime("%B %e")

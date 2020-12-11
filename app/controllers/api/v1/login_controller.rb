@@ -17,10 +17,11 @@ class Api::V1::LoginController < Api::V1::BaseController
   end
 
   def login
-    # would like to find a way to save the wechat user's profile pic and name when the back end get the login request
-    open_id = wechat_user.fetch("openid")
+    # would like to find a way to save the wechat user's profile pic and name
+    # when the back end gets the login request
     # avatar = wechat_user.fetch("avatarUrl")
     # name = wechat_user.fetch("nickName")
+    open_id = wechat_user.fetch("openid")
     @user = User.find_by(open_id: open_id)
     if @user.nil?
       @user = User.create(

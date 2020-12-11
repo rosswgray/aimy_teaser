@@ -8,7 +8,6 @@ class Api::V1::UsersController < Api::V1::BaseController
 
   def show
     @user = User.find(params[:id])
-
     # if @user.role == 'organizer'
     @bookings_as_organizer = @user.bookings_as_organizer
     # elsif @user.role == 'parent'
@@ -16,10 +15,28 @@ class Api::V1::UsersController < Api::V1::BaseController
     # end
   end
 
+  # def edit; end
+
+  def update
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      render json: {user: @user, status: :updated}
+    else
+      render_error  
+  end
+
   def favorites
     User.find(params[:user_id]).all_favorited
   end
-end
 
-# removed from line 15
-# .group_by(&:sessions).order("start_time DESC")
+  private
+
+  def user_params
+    params.require(:user).permit(:open_id, :profile_picture, :name, :phone_number, :address)
+  end
+
+  def render_error
+    render json: { errors: @user.errors.full_messages },
+      status: :unprocessable_entity
+  end
+end

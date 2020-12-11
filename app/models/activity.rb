@@ -1,8 +1,10 @@
+require 'open-uri'
+
 class Activity < ApplicationRecord
-  # belongs_to :organizer, class_name: "User"
+  before_commit :set_default_photo
+
   belongs_to :organizer, class_name: "User", foreign_key: :user_id
   has_many :sessions, dependent: :destroy
-  # has_many :instructors, through: :sessions
   has_one_attached :main_photo
   has_one_attached :photo_1
   has_one_attached :photo_2
@@ -20,7 +22,10 @@ class Activity < ApplicationRecord
   using: {
     tsearch: { prefix: true }
   }
-end
 
-# removed from line 5
-# , source_type: "Instructor"
+  def set_default_photo
+    photo_1.attach(io: File.open("app/assets/images/no_photo-03.png"), filename: "default.jpg", content_type: "image/jpg") if photo_1.blank?
+    photo_2.attach(io: File.open("app/assets/images/no_photo-03.png"), filename: "default.jpg", content_type: "image/jpg") if photo_2.blank?
+    photo_3.attach(io: File.open("app/assets/images/no_photo-03.png"), filename: "default.jpg", content_type: "image/jpg") if photo_3.blank?
+  end
+end

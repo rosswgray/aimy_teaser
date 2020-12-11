@@ -17,13 +17,13 @@ class Api::V1::UsersController < Api::V1::BaseController
 
   # def edit; end
 
-  def update
-    @user = User.find(params[:id])
-    if @user.update(user_params)
-      render json: {user: @user, status: :updated}
-    else
-      render_error  
-  end
+  # def update
+  #   @user = User.find(params[:id])
+  #   if @user.update(user_params)
+  #     render json: {user: @user, status: :updated}
+  #   else
+  #     render_error  
+  # end
 
   def favorites
     User.find(params[:user_id]).all_favorited

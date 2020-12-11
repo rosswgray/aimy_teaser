@@ -1,9 +1,10 @@
 <div class="container w-75 mt-4">
   <div class="jumbotron">
-    <span class="small">id: <%= @activity.id %></span>
+    <%# <span class="small">id:  %>
+    <%#= @activity.id</span> %>
     <h1 class="display-4"><%= @activity.title %></h1>
 
-    <p class="lead"><%= @activity.organizer.name %></p>
+    <p class="lead">Organized by <%= @activity.organizer.name %></p>
     <p><%= @activity.address %></p>
     <hr class="my-4">
     <p><%= @activity.description %></p>

@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>AimyTeaser</title>
+    <%= favicon_link_tag 'favicon.png' %>
+    <title>Aimee | Activities for kids</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -15,8 +16,8 @@
 
     <%= render 'shared/navbar' %>
 
-    <%# # lecture on devise recommends below for flashes %>
-    <%#= render 'shared/flashes' %>
+    <%# lecture on devise recommends below for flashes %>
+    <%= render 'shared/flashes' %>
     <%= yield %>
 
   </body>

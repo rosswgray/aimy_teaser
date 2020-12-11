@@ -7,9 +7,8 @@ class ActivitiesController < ApplicationController
     query = params[:query]
     if query.present?
       @activities = Activity.global_search(query)
-
     else
-      @activities = Activity.all
+      @activities = Activity.all.order("created_at DESC")
     end
   end
 
@@ -38,7 +37,7 @@ class ActivitiesController < ApplicationController
 
   def show
     @activity = Activity.find(params[:id])
-    @sessions = @activity.sessions
+    @sessions = @activity.sessions.order("start_time ASC")
   end
 
   def remove_tag

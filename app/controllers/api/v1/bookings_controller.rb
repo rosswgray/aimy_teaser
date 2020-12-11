@@ -15,8 +15,6 @@ class Api::V1::BookingsController < Api::V1::BaseController
     set_session
     if @session.bookings.where(user_id: @parent.id) != []
       render_booked
-    # elsif @session.bookings.length >= @session.capacity
-    #   render_full
     else
       @booking = Booking.new(booking_params)
       @booking.parent = @parent
@@ -62,7 +60,7 @@ class Api::V1::BookingsController < Api::V1::BaseController
     render json: { error: :already_booked }
   end
 
-  def render_full
-    render json: { error: :session_full }
-  end
+  # def render_full
+  #   render json: { error: :session_full }
+  # end
 end

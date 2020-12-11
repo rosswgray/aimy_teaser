@@ -4,7 +4,6 @@ class Api::V1::BookingsController < Api::V1::BaseController
   def index
     set_parent
     @bookings = @parent.bookings.joins(:session).order("start_time ASC")
-    # .group_by(&:session).order("start_time DESC")
   end
 
   def new
@@ -14,13 +13,17 @@ class Api::V1::BookingsController < Api::V1::BaseController
   def create
     set_parent
     set_session
-    @booking = Booking.new(booking_params)
-    @booking.parent = @parent
-    @booking.session = @session
-    if @booking.save
-      render json: { booking: @booking, status: :success }
+    if @session.bookings.where(user_id: @parent.id) != []
+      render_booked
     else
-      render_error
+      @booking = Booking.new(booking_params)
+      @booking.parent = @parent
+      @booking.session = @session
+      if @booking.save
+        render json: { booking: @booking, status: :success }
+      else
+        render_error
+      end
     end
   end
 
@@ -51,5 +54,13 @@ class Api::V1::BookingsController < Api::V1::BaseController
 
   def render_error
     render json: { error: @booking.errors.full_messages }
+  end
+
+  def render_booked
+    render json: { error: :already_booked }
+  end
+
+  def render_full
+    render json: { error: :session_full }
   end
 end

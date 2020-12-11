@@ -13,16 +13,17 @@ class Api::V1::BookingsController < Api::V1::BaseController
   def create
     set_parent
     set_session
-    if @session.bookings.where(user_id: @parent.id)
+    if @session.bookings.where(user_id: @parent.id) != []
       render_full
-    end
-    @booking = Booking.new(booking_params)
-    @booking.parent = @parent
-    @booking.session = @session
-    if @booking.save
-      render json: { booking: @booking, status: :success }
     else
-      render_error
+      @booking = Booking.new(booking_params)
+      @booking.parent = @parent
+      @booking.session = @session
+      if @booking.save
+        render json: { booking: @booking, status: :success }
+      else
+        render_error
+      end
     end
   end
 

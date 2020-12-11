@@ -4,7 +4,6 @@ class Api::V1::BookingsController < Api::V1::BaseController
   def index
     set_parent
     @bookings = @parent.bookings.joins(:session).order("start_time ASC")
-    # .group_by(&:session).order("start_time DESC")
   end
 
   def new
@@ -14,6 +13,9 @@ class Api::V1::BookingsController < Api::V1::BaseController
   def create
     set_parent
     set_session
+    if @session.bookings.where(user_id: @parent.id)
+      render_full
+    end
     @booking = Booking.new(booking_params)
     @booking.parent = @parent
     @booking.session = @session
@@ -51,5 +53,9 @@ class Api::V1::BookingsController < Api::V1::BaseController
 
   def render_error
     render json: { error: @booking.errors.full_messages }
+  end
+
+  def render_full
+    render json: { error: :already_booked }
   end
 end

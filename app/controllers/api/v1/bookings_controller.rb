@@ -10,6 +10,8 @@ class Api::V1::BookingsController < Api::V1::BaseController
     @booking = Booking.new
   end
 
+  # before creating a new booking, checks to see if the user
+  # has already booked that session id
   def create
     set_parent
     set_session
